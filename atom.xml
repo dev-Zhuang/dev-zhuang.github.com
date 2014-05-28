@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[数字夜话的博客]]></title>
+  <link href="http://dev-Zhuang.github.io/atom.xml" rel="self"/>
+  <link href="http://dev-Zhuang.github.io/"/>
+  <updated>2014-05-28T23:01:21+08:00</updated>
+  <id>http://dev-Zhuang.github.io/</id>
+  <author>
+    <name><![CDATA[jon.zhuang]]></name>
+    <email><![CDATA[jonz.tech@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
