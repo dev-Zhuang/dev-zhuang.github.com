@@ -4,7 +4,7 @@
   <title><![CDATA[数字夜话的博客]]></title>
   <link href="http://dev-zhuang.github.io/atom.xml" rel="self"/>
   <link href="http://dev-zhuang.github.io/"/>
-  <updated>2014-05-29T09:54:08+08:00</updated>
+  <updated>2014-05-29T11:24:10+08:00</updated>
   <id>http://dev-zhuang.github.io/</id>
   <author>
     <name><![CDATA[数字夜话]]></name>
@@ -29,6 +29,75 @@
 <li>octopress官方步骤《<a href="http://octopress.org/docs/setup/">英文:Octopress Setup</a>》</li>
 </ul>
 
+
+<p><strong>在这里简单描述一下步骤:</strong></p>
+
+<p> 1.安装git环境，mac上自带git。若其他环境，请google之。<br/>
+ 2.安装<a href="http://octopress.org/docs/setup/rbenv">rbenv</a>或者<a href="http://octopress.org/docs/setup/rvm/">RVM</a><br/>
+ 3.使用git从github上下载octopress安装文件,并且用终端安装</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#－－－－－－－－－－－－－下载过程－－－－－－－－－－－－－－－－－－－－－－－－ 
+</span><span class='line'>git clone git://github.com/imathis/octopress.git octopress  //github上下载，等待下载完成
+</span><span class='line'>cd  octopress                                               //移动到octopress文件夹  
+</span><span class='line'>#－－－－－－－－－－－－－安装过程－－－－－－－－－－－－－－－－－－－－－－－－  
+</span><span class='line'>gem    install bundler 
+</span><span class='line'>rbenv  rehash    # If you use rbenv, rehash to be able to run the bundle command
+</span><span class='line'>bundle install
+</span><span class='line'>#－－－－－－－－－－－－－安装默认主题－－－－－－－－－－－－－－－－－－－－－－－－ 
+</span><span class='line'>rake install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+以上步骤操作完后，输入rake preview,然后在safari上输入localhost:4000或者127.0.0.01:4000(推荐)，预览的blog主题效果。在这里，自己遇到了safari显示为空。原因是在safari7和mac os 10.9上有bug,提供的<a href="https://github.com/imathis/octopress/issues/1395">解决办法</a>见链接。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#－－－－－－－－－－－－－预览主题－－－－－－－－－－－－－－－－－－－－－－－－
+</span><span class='line'>rake preview                        //输入后，通过safari url: 127.0.0.01:4000上预览
+</span><span class='line'>#－－－－－－－－－－－－－解决预览空白方法－－－－－－－－－－－－－－－－－－－－－－－－
+</span><span class='line'># $ echo gem \"thin\" &gt;&gt; Gemfile
+</span><span class='line'># $ bundle install</span></code></pre></td></tr></table></div></figure>
+
+
+<p>4.github上创建一个博客地址。以自己的账号(用户名:dev-Zhuang)为例子，说一下步骤：<br/>
+创建github账号后，点New repository创建一个新的repository，命名(必须)为：dev-Zhuang.github.com即可。<br/>
+这里不需要到settings中勾选automatic page generate，保持代码库为空，然后将你本地的博客上传到代码库即可。自己在这一步参考了网上的资料，走了不少弯路，导致了上传过程中git不断的报错，T_T。</p>
+
+<p>5.配置博客，然后上传到github上。<br/>
+这里以后每次写blog都要用rake generate和rake deploy上传。配置博客过程就不在细说，自行参考相关文献。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>－－－－－－－－－－－－－设置上传地址－－－－－－－－－－－－－－－－－－－－－－－－
+</span><span class='line'>rake setup_github_pages
+</span><span class='line'>－－－－－－－－－－－－－在要求输入的地址处输入,然后输入账号密码－－－－－－－－－－
+</span><span class='line'>https://github.com/dev-Zhuang/dev-Zhuang.github.com.git
+</span><span class='line'>rake generate       //重新生成
+</span><span class='line'>rake deploy        //上传</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+6. 搭建分享平台与评论系统。<br/>
+   这一步见唐巧boy中的内容。微博平台拷贝一下代码，修改一下显示参数即可。评论系统用的是友言的,注册拷贝代码.因为改系统是根据uid和文章index来做评论依据，大家需要先注册自己的账号获取uid。so easy！</p>
+
+<p>好了，就写到这里。学习<a href="http://zh.wikipedia.org/wiki/Markdown">markdown语法</a>，写自己的博客去吧，have fun！</p>
 ]]></content>
   </entry>
   
