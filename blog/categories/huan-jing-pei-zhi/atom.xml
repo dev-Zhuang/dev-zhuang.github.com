@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 环境配置 | 数字夜话的博客]]></title>
   <link href="http://dev-zhuang.github.io/blog/categories/huan-jing-pei-zhi/atom.xml" rel="self"/>
   <link href="http://dev-zhuang.github.io/"/>
-  <updated>2014-05-29T11:26:59+08:00</updated>
+  <updated>2014-05-29T11:28:27+08:00</updated>
   <id>http://dev-zhuang.github.io/</id>
   <author>
     <name><![CDATA[数字夜话]]></name>
@@ -18,7 +18,7 @@
     <link href="http://dev-zhuang.github.io/blog/2014/05/28/octopress-da-jian-ji-lu/"/>
     <updated>2014-05-28T23:17:39+08:00</updated>
     <id>http://dev-zhuang.github.io/blog/2014/05/28/octopress-da-jian-ji-lu</id>
-    <content type="html"><![CDATA[<p>花了大半天的时间研究了octopress的搭建，不会命令行的悲剧。虽然网上有许多教程，但是自己做了一遍，才发现也没有那么简单。菜鸟一思考，上帝和神人久发笑。：）</p>
+    <content type="html"><![CDATA[<p>花了大半天的时间研究了octopress的搭建，不会命令行的悲剧。虽然网上有许多教程，但是自己做了一遍，才发现也没有那么简单。菜鸟一思考，上帝和神人就发笑。：）</p>
 
 <h2>基本搭建</h2>
 
