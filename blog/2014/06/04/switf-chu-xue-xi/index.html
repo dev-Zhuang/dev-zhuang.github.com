@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>数字夜话的博客</title>
+  <title>Switf 初学习 - 数字夜话的博客</title>
   <meta name="author" content="数字夜话">
 
   
-  <meta name="description" content="“庄帅的个人博客"">
-  <meta name="keywords" content="IOS、Android、移动开发">
+  <meta name="description" content="wwwdc 2014大会,苹果推出了新语言&mdash;雨燕swift。虽然很多开发者如往年一样，进行了大量的神吐槽,但是为了尽快成为坐在马背上的那个人&mdash;跟着趋势走，还是来赶快学习一下雨燕吧。 xcode 6 beta 伴随着雨燕发布的开发工具是xcode 6测试版,下载安装后。 &hellip;">
+  
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dev-zhuang.github.io">
+  <link rel="canonical" href="http://dev-zhuang.github.io/blog/2014/06/04/switf-chu-xue-xi">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="数字夜话的博客" type="application/atom+xml">
@@ -65,15 +65,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/06/04/switf-chu-xue-xi/">Switf 初学习</a></h1>
+      <h1 class="entry-title">Switf 初学习</h1>
     
     
       <p class="meta">
@@ -96,7 +93,7 @@
   </header>
 
 
-  <div class="entry-content"><p>wwwdc 2014大会,苹果推出了新语言&mdash;雨燕<code>swift</code>。虽然很多开发者如往年一样，进行了大量的神吐槽,但是为了尽快成为坐在马背上的那个人&mdash;跟着趋势走，还是来赶快学习一下雨燕吧。</p>
+<div class="entry-content"><p>wwwdc 2014大会,苹果推出了新语言&mdash;雨燕<code>swift</code>。虽然很多开发者如往年一样，进行了大量的神吐槽,但是为了尽快成为坐在马背上的那个人&mdash;跟着趋势走，还是来赶快学习一下雨燕吧。</p>
 
 <h2>xcode 6 beta</h2>
 
@@ -368,166 +365,16 @@
 
 <p>好了,就先写到这里。对于编程里的函数与类、对象，由于内容比较多将记录在下一篇blog里。</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/06/01/core-datachu-bu-liao-jie/">Core Data初步了解</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">数字夜话</span></span>
 
-<time datetime="2014-06-01T21:59:25+08:00" pubdate data-updated="true">Jun 1<span>st</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>技术预览</h2>
-
-<h4>核心数据(Core Data)的特性</h4>
-
-<p>核心数据框架提供了一般化与自动化的处理对象生命周期、对象图处理与对象持久化的的共同解决方案。它包括的特性有:</p>
-
-<ul>
-<li>改变历史记录与支持撤销<br/>
-核心数据提供了在文本编辑的基础上支持撤销与重做的功能。</li>
-<li>关系保存 <br/>
-核心数据迁移改变,包括对象间的关系一致性。</li>
-<li>惰性<br/>
-核心数据能够通过烂加载对象的方式来减少程序的内存开销。它也支持实现部分惰性,和共享copy-on-write(COW)<a href="http://en.wikipedia.org/wiki/Copy-on-write">[维基]</a><a href="http://www.cnblogs.com/chenglei/archive/2009/08/06/1540175.html">[中文]</a>。cow简单来多，就是对于有读写操作的对象来说，在生成对象时，并不直接开辟内存，而是将拷贝对象生成能存延迟到写操作。即，在读对象数据时，直接去读原来的对象；而当到写数据（改变对象值）才去申请内存，生成新对象。</li>
-<li>自动验证属性值<br/>
-核心数据通过KVC验证方法来保证私有值在合适的范围之内，以便于使绑定的值有效。</li>
-<li>方案迁移</li>
-<li>可选整合应用程序控制层来支持用户接口同步</li>
-<li>完全的、自动的支持Key-value-coding和key－value－observing.</li>
-<li>在内存与用户界面中分组、过滤与组织数据</li>
-<li>多样的查询规则</li>
-<li>合并策略</li>
-</ul>
-
-
-<p>核心数据提供了对象图(object graph)管理与为程序基础与cocoa提供持续的使用功能。那么什么是核心数据?</p>
-
-<ul>
-<li>对象映射(object－relational)</li>
-<li>自动持续化的数据(automatic data persistence)</li>
-<li>高效的存取(efficient access)</li>
-</ul>
-
-
-<h4>为什么你要使用core Data ?</h4>
-
-<ul>
-<li>更少的内存开销。</li>
-<li>更快的启动速度。</li>
-<li>更少的数据库操作步骤。</li>
-</ul>
-
-
-<h4>核心数据误区</h4>
-
-<h2>核心数据的本原(core data basic)</h2>
-
-<h2>管理对象模型(managed object models)</h2>
-
-<h2>使用对象模型(using a managed objects model)</h2>
-
-<h2>管理对象(managed objects)</h2>
-
-<h2>管理对象的存储方法(Managed Object Accessor Methods)</h2>
-
-<h2>创建与删除管理对象(creating and deleting managed objects)</h2>
-
-<h2>取得管理对象(fetching managed objects)</h2>
-
-<h2>使用管理对象(using managed objects)</h2>
-
-<h2>对象生命周期管理(objectlifetime management)</h2>
-
-<h2>关系与特性获取(relationships and fetched properties)</h2>
-
-<h2>非标准持久化属性(non-standar persistent attributes)</h2>
-
-<h2>管理对象验证(managed object validation)</h2>
-
-<h2>惰性与唯一性(Faulting and Uniquing)</h2>
-
-<h2>使用持久化存储(using persistent stores)</h2>
-
-<h2>核心数据与cocoa绑定(core data and cocoa bindings)</h2>
-
-<h2>改变管理(change management)</h2>
-
-<h2>持久化存储特性(persistent store features)</h2>
-
-<h2>核心数据协作(concurrency with core data)</h2>
-
-<h2>核心数据性能(core data performance)</h2>
-
-<h2>核心数据故障处理(troubleshooting core data)</h2>
-
-<h2>高效的导入数据(efficiently importing data)</h2>
-
-<h4>核心数据架构(core data architecture)</h4>
-
-<ul>
-<li>对象管理（managed objects): NSManagedObject、NSManagedObjectContext</li>
-<li>数据存储(data storage): NSPersistentStore</li>
-<li>管理你的模型(managing your model): NSManagedObjectModel</li>
-<li>实体(Entities): NSEntityDescription</li>
-</ul>
-
-
-<h4>关系图</h4>
-
-<p><img class="center" src="/images/blogimages/blog2_coredata_relationship.png"></p>
-
-<h4>经验法则<a href="http://en.wikipedia.org/wiki/Rule_of_thumb">(rule of thumb)</a></h4>
-
-<ul>
-<li>在空间与时间上找到平衡点</li>
-<li>在心中设计你的UI</li>
-<li>避免实体继承</li>
-<li>别把二进制大型数据对象放到数据库中</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/05/28/octopress-da-jian-ji-lu/">Octopress 搭建记录</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -539,106 +386,60 @@
   
 
 
-<time datetime="2014-05-28T23:17:39+08:00" pubdate data-updated="true">May 28<span>th</span>, 2014</time>
-        
-      </p>
+<time datetime="2014-06-04T05:31:29+08:00" pubdate data-updated="true">Jun 4<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/swift-xue-xi/'>Swift_学习</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>花了大半天的时间研究了octopress的搭建，不会命令行的悲剧。虽然网上有许多教程，但是自己做了一遍，才发现也没有那么简单。菜鸟一思考，上帝和神人就发笑。：）</p>
-
-<h2>基本搭建</h2>
-
-<p>具体的搭建，在这里就不一一详细描述，网上一抓一大把。大家可以参考一下大神们的一些博客:</p>
-
-<ul>
-<li>唐巧的技术博客里《<a href="http://blog.devtang.com/blog/2012/02/10/setup-blog-based-on-github/">像写程序一样写博客：搭建基于github的博客</a>》</li>
-<li>octopress官方步骤《<a href="http://octopress.org/docs/setup/">英文:Octopress Setup</a>》</li>
-</ul>
-
-
-<p><strong>在这里简单描述一下步骤:</strong></p>
-
-<p> 1.安装git环境，mac上自带git。若其他环境，请google之。<br/>
- 2.安装<a href="http://octopress.org/docs/setup/rbenv">rbenv</a>或者<a href="http://octopress.org/docs/setup/rvm/">RVM</a><br/>
- 3.使用git从github上下载octopress安装文件,并且用终端安装</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#－－－－－－－－－－－－－下载过程－－－－－－－－－－－－－－－－－－－－－－－－ 
-</span><span class='line'>git clone git://github.com/imathis/octopress.git octopress  //github上下载，等待下载完成
-</span><span class='line'>cd  octopress                                               //移动到octopress文件夹  
-</span><span class='line'>#－－－－－－－－－－－－－安装过程－－－－－－－－－－－－－－－－－－－－－－－－  
-</span><span class='line'>gem    install bundler 
-</span><span class='line'>rbenv  rehash    # If you use rbenv, rehash to be able to run the bundle command
-</span><span class='line'>bundle install
-</span><span class='line'>#－－－－－－－－－－－－－安装默认主题－－－－－－－－－－－－－－－－－－－－－－－－ 
-</span><span class='line'>rake install
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-以上步骤操作完后，输入rake preview,然后在safari上输入localhost:4000或者127.0.0.01:4000(推荐)，预览的blog主题效果。在这里，自己遇到了safari显示为空。原因是在safari7和mac os 10.9上有bug,提供的<a href="https://github.com/imathis/octopress/issues/1395">解决办法</a>见链接。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#－－－－－－－－－－－－－预览主题－－－－－－－－－－－－－－－－－－－－－－－－
-</span><span class='line'>rake preview                        //输入后，通过safari url: 127.0.0.01:4000上预览
-</span><span class='line'>#－－－－－－－－－－－－－解决预览空白方法－－－－－－－－－－－－－－－－－－－－－－－－
-</span><span class='line'># $ echo gem \"thin\" &gt;&gt; Gemfile
-</span><span class='line'># $ bundle install</span></code></pre></td></tr></table></div></figure>
-
-
-<p>4.github上创建一个博客地址。以自己的账号(用户名:dev-Zhuang)为例子，说一下步骤：<br/>
-创建github账号后，点New repository创建一个新的repository，命名(必须)为：dev-Zhuang.github.com即可。<br/>
-这里不需要到settings中勾选automatic page generate，保持代码库为空，然后将你本地的博客上传到代码库即可。自己在这一步参考了网上的资料，走了不少弯路，导致了上传过程中git不断的报错，T_T。</p>
-
-<p>5.配置博客，然后上传到github上。<br/>
-这里以后每次写完blog，都要用rake generate和rake deploy上传。配置博客过程就不在细说，自行参考相关文献。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>－－－－－－－－－－－－－设置上传地址－－－－－－－－－－－－－－－－－－－－－－－－
-</span><span class='line'>rake setup_github_pages
-</span><span class='line'>－－－－－－－－－－－－－在要求输入的地址处输入,然后输入账号密码－－－－－－－－－－
-</span><span class='line'>https://github.com/dev-Zhuang/dev-Zhuang.github.com.git
-</span><span class='line'>rake generate       //重新生成
-</span><span class='line'>rake deploy        //上传</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-6. 搭建分享平台与评论系统。<br/>
-   这一步见唐巧boy中的内容。微博平台拷贝一下代码，修改一下显示参数即可。评论系统用的是友言的,注册拷贝代码.因为改系统是根据uid和文章index来做评论依据，大家需要先注册自己的账号获取uid。so easy！</p>
-
-<p>好了，就写到这里。学习<a href="http://zh.wikipedia.org/wiki/Markdown">markdown语法</a>，写自己的博客去吧，have fun！</p>
+      <div class="sharing">
+    
+    <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_xiaoyou"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
 </div>
-  
-  
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1396404044678373" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+<div>
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1933910"></script>
+    <!-- UY END -->
 </div>
+
+    
+  
+  
+  
+ 
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/06/01/core-datachu-bu-liao-jie/" title="Previous Post: Core Data初步了解">&laquo; Core Data初步了解</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -677,6 +478,7 @@
 </section>
   
 </aside>
+
 
     </div>
   </div>

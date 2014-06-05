@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Swift_学习 | 数字夜话的博客]]></title>
+  <link href="http://dev-zhuang.github.io/blog/categories/swift-xue-xi/atom.xml" rel="self"/>
+  <link href="http://dev-zhuang.github.io/"/>
+  <updated>2014-06-05T09:19:26+08:00</updated>
+  <id>http://dev-zhuang.github.io/</id>
+  <author>
+    <name><![CDATA[数字夜话]]></name>
+    <email><![CDATA[jonz.tech@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Switf 初学习]]></title>
+    <link href="http://dev-zhuang.github.io/blog/2014/06/04/switf-chu-xue-xi/"/>
+    <updated>2014-06-04T05:31:29+08:00</updated>
+    <id>http://dev-zhuang.github.io/blog/2014/06/04/switf-chu-xue-xi</id>
+    <content type="html"><![CDATA[<p>wwwdc 2014大会,苹果推出了新语言&mdash;雨燕<code>swift</code>。虽然很多开发者如往年一样，进行了大量的神吐槽,但是为了尽快成为坐在马背上的那个人&mdash;跟着趋势走，还是来赶快学习一下雨燕吧。</p>
+
+<h2>xcode 6 beta</h2>
+
+<p>伴随着雨燕发布的开发工具是<a href="http://pan.baidu.com/s/1gduwNqN">xcode 6测试版</a>,下载安装后。创建单个控制器的程序,我们可以知道可以选择<code>Objective-c</code>或者<code>Swift</code>语言来进行开发。不多说，选择Swift看看差异：</p>
+
+<p><img class="center" src="/images/blogimages/blog3_swift-01.png" title="&ldquo;工程目录结构&rdquo;" ></p>
+
+<ul>
+<li><h4>工程目录更简洁</h4>
+
+<p>我们可以知道在xcode5的版本中，文件夹分为:工程文件夹、单元测试文件夹、框架文件夹和product文件夹。xcode6直接省去了框架文件夹。</p></li>
+<li><h4>类文件的简化</h4>
+
+<p>我们可以看到AppDelegate.swift和ViewController.swift两个类文件,main.storyboard一如往常。由此可知，类文件.h与.m合并为一个.swift,减少头文件与实现文件的切换过程。</p></li>
+<li><h4>更少的支持文件</h4>
+
+<p>没有了main.m程序入口文件、prefix.pch文件和国际化语言plist文件,仅仅剩下一个yourproject.plist配置文件。</p></li>
+<li><h4>没有默认的lib文件</h4>
+
+<p>通过.swift<code>import UIKit</code>和target>> build phase的link binary with lib 为空可知：<code>foundation.framework</code>、<code>UIKit.framework</code>与<code>XCTest.framework</code>三个基础框架系统不在显示，UIKit将作为必须框架自动为您导入到工程中.说明了:系统其实还是自动为您导入了一个UIKit框架，但以后link binary lib中将直接显示你导入和用到的framework&amp;lib文件。</p></li>
+</ul>
+
+
+<h2>进入swift世界</h2>
+
+<p><code>Swift</code>是建立在C与Objective-c优点上的用于编写IOS和Mac OSX应用的一门新语言。为了实现更简单、灵活而有趣的编程，它摒弃了C语言兼容上的限制性，集合了更多的安全编程模块和现代的编程特性。</p>
+
+<h4>再见hello world</h4>
+
+<p>按照编程界惯例，来写一条hello world。
+<code>ruby
+println('hello world')
+</code>
+恭喜您，你学会了一门语言！lol，是不是很熟悉呢？其实就是C上的log语句，只不过少了分号。对的,swift允许您：</p>
+
+<blockquote><h5>1. 不导入基础库。如i/o或者string文件。</h5>
+
+<h5>2. 不需要main函数。在任何全局范围内写语句，都会被当作是入口。囧，当然这在工程里还是从appDelegate开始。</h5>
+
+<h5>3. 不需要分号。blog主表示再次冒汗。</h5></blockquote>
+
+<h4>常量与变量</h4>
+
+<p>swift中对于简单型数据只有两个关键字,常量<code>let</code>和变量<code>var</code>。赋值时<code>变量名</code>与<code>=</code>必须用<code>空格</code>分开，否则编译器报错。
+```ruby
+/<em>&mdash;&mdash;&mdash;对于常量，你必须给他赋一个值&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</em>/
+let implicInt    = 70          //不明确的赋值
+let implicDouble = 70.0        //不明确的赋值
+let explicDouble:Double = 70   //明确说明是double类型赋值</p>
+
+<p>/<em>&mdash;&mdash;&mdash;对于类型转换，必须明确指出&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</em>/
+let str        = &ldquo;this is string&rdquo;
+let int_a  = 70
+let int_b  = 80
+let str_int    = str + String(int_a) //您必须明确指出需要转换类型，否则编译器会报错。
+let string_ing = &ldquo;(int_a) + (int_b) = (int_a+int_b)&rdquo; //另一种转换
+<code>``
+</code>可空变量<code>既可以是一个值，也可以是一个nil来表明该值不存在。可空变量在变量名后用</code>var 变量名:数据类型?`表示。</p>
+
+<h4>数组与字典</h4>
+
+<p>通过<code>[]</code>来创建数组与字典，并且通过<code>索引</code>或者<code>键值</code>来创建元素。
+```ruby
+/<em>&mdash;&mdash;&mdash;创建空数组或字典&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</em>/
+let emptyarr = String<a href=""></a>
+let emptydic = Dictionary&lt;string,float>()</p>
+
+<p>/<em>&mdash;&mdash;&mdash;您也可以这样引用空数组&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</em>/</p>
+
+<pre><code> emptyarr = []
+ emptydic = [:]
+</code></pre>
+
+<p>/<em>&mdash;&mdash;&mdash;创建带值的数组或字典&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</em>/
+var letters = [&ldquo;A&rdquo;,&ldquo;B&rdquo;,&ldquo;C&rdquo;]</p>
+
+<pre><code>letters[1] = "A"
+</code></pre>
+
+<p>var letters = [</p>
+
+<pre><code>"keyA":"A",
+"keyB":"B"
+</code></pre>
+
+<p>]</p>
+
+<p>```</p>
+
+<h4>控制流</h4>
+
+<p>使用<code>if</code>和<code>switch</code>作为控制条件，使用<code>for</code>、<code>for-in</code>、<code>while</code>和<code>do-while</code>循环迭代。它们的参数是可选的，但是主体是必须的。
+```ruby
+/<em>&mdash;&mdash;&mdash;迭代方式&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</em>/
+let arrs = [10,20,30,40]
+var result = 0
+for aVar in arrs {
+result += aVar
+}
+println(&ldquo;result is:(result)&rdquo;)</p>
+
+<p>/<em>&mdash;&mdash;&mdash;if 条件语句必须是明确的布尔值&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</em>/
+var notAboolen = 0
+if notAboolen {}     //这种方式是错的,switf 不知道notAboolen是布尔值。</p>
+
+<p><code>``
+你可以用</code>let<code>配合</code>可空变量`作为if的条件判断。在条件语句中可空变量赋值给let常量后,如果是nil则常量变为false布尔型;否则为true。</p>
+
+<p>```ruby
+var optVar: String? = &ldquo;John&rdquo;  //result: hello,john
+//optVar = nil                //result: hello!
+var greeting = &ldquo;Hello!&rdquo;
+let name = optVar
+if name {                      //也可以这样写 if let name = optVar {}</p>
+
+<pre><code>greeting = "Hello, \(name)"
+</code></pre>
+
+<p>}
+println(&ldquo;(greeting)&rdquo;)
+```</p>
+
+<h4>swith 语句</h4>
+
+<p><code>switch</code>语句支持所有类型的比较，不仅限与整型条件,也可以是复杂的判断操作等,无break语句。在swift中<code>default</code>条件是不能少的，并且最起码要有一条执行语句。而且执行完一个判断条件主体,程序直接跳出swith块。</p>
+
+<p>```ruby
+var vResult = &ldquo;&rdquo;
+let vegetable = &ldquo;red pepper&rdquo;
+switch vegetable {</p>
+
+<pre><code>case "celery":
+    vResult = "Add some raisins and make ants on a log."
+case "cucumber", "watercress":
+    vResult = "That would make a good tea sandwich."
+case let x where x.hasSuffix("pepper"): // x变量尾部是否包含pepper
+    vResult = "Is it a spicy \(x)?"
+default:                                       //不可少
+    vResult = "Everything tastes good in soup."//最起码包含一条语句
+</code></pre>
+
+<p>}
+println(&ldquo;(vResult)&rdquo;)     // result:Is it a spicy red pepper?
+```</p>
+
+<h4>for-in 语句</h4>
+
+<p>for-in 对于枚举一个字典,我们可以使用两个用<code>(键,值)</code>来作为枚举方式的过程变量。对比OC来说，这不失为是一种更简洁的方式。
+```ruby
+var anEmployee = [</p>
+
+<pre><code>"company":"myCompamy",
+"empName":"jonz",
+"department":"dev",
+"salary":"3000"
+</code></pre>
+
+<p>]
+println(&ldquo;here is an employee infomation:&rdquo;)
+for (key,value) in anEmployee
+{</p>
+
+<pre><code>println("       \(key):\(value)")
+</code></pre>
+
+<p>}
+/<em>&mdash;&mdash;&mdash;-the result is:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</em>/
+here is an employee infomation:</p>
+
+<pre><code>empName:jonz
+department:dev
+salary:3000
+company:myCompamy
+</code></pre>
+
+<p>```</p>
+
+<h4>使用<code>..</code>和<code>...</code>来表示范围</h4>
+
+<p>对于明确循环界限的迭代，我们可以使用<code>..</code>来作循环。比如求从0到3之间的数字和：
+```ruby
+var count = 0
+for i in 0..4{ //注意迭代编程中的少1问题，这里相当于for var i=0;i&lt;4;i++</p>
+
+<pre><code>count += i
+</code></pre>
+
+<p>}
+println(&ldquo;(count)&rdquo;) //result is:6</p>
+
+<p>count = 0
+for i in 0&hellip;3{ //注意迭代编程中的少1问题，这里相当于for var i=0;i&lt;=3;i++</p>
+
+<pre><code>count += i
+</code></pre>
+
+<p>}
+println(&ldquo;(count)&rdquo;) //result is: 6</p>
+
+<p><code>``
+我们知道，新的特性使语句更加简短,</code>..<code>不包含范围的上界，</code>&hellip;`包含了范围的上界.</p>
+
+<h2>end line</h2>
+
+<p>好了,就先写到这里。对于编程里的函数与类、对象，由于内容比较多将记录在下一篇blog里。</p>
+]]></content>
+  </entry>
+  
+</feed>

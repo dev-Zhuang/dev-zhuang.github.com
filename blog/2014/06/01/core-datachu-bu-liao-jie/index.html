@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Core Data初步了解 - 数字夜话的博客</title>
+  <meta name="author" content="数字夜话">
+
+  
+  <meta name="description" content="技术预览 核心数据(Core Data)的特性 核心数据框架提供了一般化与自动化的处理对象生命周期、对象图处理与对象持久化的的共同解决方案。它包括的特性有: 改变历史记录与支持撤销
+核心数据提供了在文本编辑的基础上支持撤销与重做的功能。
+关系保存 核心数据迁移改变,包括对象间的关系一致性。
+惰性 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://dev-zhuang.github.io/blog/2014/06/01/core-datachu-bu-liao-jie">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="数字夜话的博客" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">数字夜话的博客</a></h1>
+  
+    <h2>开始好好写博客.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss email">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+    <li><a href="jonz.tech@gmail.com" rel="subscribe-email" title="subscribe via email">Email</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:dev-zhuang.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Core Data初步了解</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-01T21:59:25+08:00" pubdate data-updated="true">Jun 1<span>st</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>技术预览</h2>
+
+<h4>核心数据(Core Data)的特性</h4>
+
+<p>核心数据框架提供了一般化与自动化的处理对象生命周期、对象图处理与对象持久化的的共同解决方案。它包括的特性有:</p>
+
+<ul>
+<li>改变历史记录与支持撤销<br/>
+核心数据提供了在文本编辑的基础上支持撤销与重做的功能。</li>
+<li>关系保存 <br/>
+核心数据迁移改变,包括对象间的关系一致性。</li>
+<li>惰性<br/>
+核心数据能够通过烂加载对象的方式来减少程序的内存开销。它也支持实现部分惰性,和共享copy-on-write(COW)<a href="http://en.wikipedia.org/wiki/Copy-on-write">[维基]</a><a href="http://www.cnblogs.com/chenglei/archive/2009/08/06/1540175.html">[中文]</a>。cow简单来多，就是对于有读写操作的对象来说，在生成对象时，并不直接开辟内存，而是将拷贝对象生成能存延迟到写操作。即，在读对象数据时，直接去读原来的对象；而当到写数据（改变对象值）才去申请内存，生成新对象。</li>
+<li>自动验证属性值<br/>
+核心数据通过KVC验证方法来保证私有值在合适的范围之内，以便于使绑定的值有效。</li>
+<li>方案迁移</li>
+<li>可选整合应用程序控制层来支持用户接口同步</li>
+<li>完全的、自动的支持Key-value-coding和key－value－observing.</li>
+<li>在内存与用户界面中分组、过滤与组织数据</li>
+<li>多样的查询规则</li>
+<li>合并策略</li>
+</ul>
+
+
+<p>核心数据提供了对象图(object graph)管理与为程序基础与cocoa提供持续的使用功能。那么什么是核心数据?</p>
+
+<ul>
+<li>对象映射(object－relational)</li>
+<li>自动持续化的数据(automatic data persistence)</li>
+<li>高效的存取(efficient access)</li>
+</ul>
+
+
+<h4>为什么你要使用core Data ?</h4>
+
+<ul>
+<li>更少的内存开销。</li>
+<li>更快的启动速度。</li>
+<li>更少的数据库操作步骤。</li>
+</ul>
+
+
+<h4>核心数据误区</h4>
+
+<h2>核心数据的本原(core data basic)</h2>
+
+<h2>管理对象模型(managed object models)</h2>
+
+<h2>使用对象模型(using a managed objects model)</h2>
+
+<h2>管理对象(managed objects)</h2>
+
+<h2>管理对象的存储方法(Managed Object Accessor Methods)</h2>
+
+<h2>创建与删除管理对象(creating and deleting managed objects)</h2>
+
+<h2>取得管理对象(fetching managed objects)</h2>
+
+<h2>使用管理对象(using managed objects)</h2>
+
+<h2>对象生命周期管理(objectlifetime management)</h2>
+
+<h2>关系与特性获取(relationships and fetched properties)</h2>
+
+<h2>非标准持久化属性(non-standar persistent attributes)</h2>
+
+<h2>管理对象验证(managed object validation)</h2>
+
+<h2>惰性与唯一性(Faulting and Uniquing)</h2>
+
+<h2>使用持久化存储(using persistent stores)</h2>
+
+<h2>核心数据与cocoa绑定(core data and cocoa bindings)</h2>
+
+<h2>改变管理(change management)</h2>
+
+<h2>持久化存储特性(persistent store features)</h2>
+
+<h2>核心数据协作(concurrency with core data)</h2>
+
+<h2>核心数据性能(core data performance)</h2>
+
+<h2>核心数据故障处理(troubleshooting core data)</h2>
+
+<h2>高效的导入数据(efficiently importing data)</h2>
+
+<h4>核心数据架构(core data architecture)</h4>
+
+<ul>
+<li>对象管理（managed objects): NSManagedObject、NSManagedObjectContext</li>
+<li>数据存储(data storage): NSPersistentStore</li>
+<li>管理你的模型(managing your model): NSManagedObjectModel</li>
+<li>实体(Entities): NSEntityDescription</li>
+</ul>
+
+
+<h4>关系图</h4>
+
+<p><img class="center" src="/images/blogimages/blog2_coredata_relationship.png"></p>
+
+<h4>经验法则<a href="http://en.wikipedia.org/wiki/Rule_of_thumb">(rule of thumb)</a></h4>
+
+<ul>
+<li>在空间与时间上找到平衡点</li>
+<li>在心中设计你的UI</li>
+<li>避免实体继承</li>
+<li>别把二进制大型数据对象放到数据库中</li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">数字夜话</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-01T21:59:25+08:00" pubdate data-updated="true">Jun 1<span>st</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ios-ted/'>IOS_TED</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    
+    <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_xiaoyou"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1396404044678373" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+<div>
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1933910"></script>
+    <!-- UY END -->
+</div>
+
+    
+  
+  
+  
+ 
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/05/28/octopress-da-jian-ji-lu/" title="Previous Post: octopress 搭建记录">&laquo; octopress 搭建记录</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/06/04/switf-chu-xue-xi/" title="Next Post: Switf 初学习">Switf 初学习 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>我的微博</h1>
+<iframe width="260" height="400" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=zh_tw&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=6&isTitle=0&noborder=1&isWeibo=1&isFans=1&uid=3989441254&verifier=1ea82041&dpc=1"></iframe>
+</section><section>
+  <h1>最近文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/06/04/switf-chu-xue-xi/">Switf 初学习</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/01/core-datachu-bu-liao-jie/">Core Data初步了解</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/28/octopress-da-jian-ji-lu/">Octopress 搭建记录</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+<section> 
+  <h1>文章分类</h1> 
+  <ul id="categories"> 
+    <li class='category'><a href='/blog/categories/ios-ted/'>IOS_TED (1)</a></li>
+<li class='category'><a href='/blog/categories/swift-学习/'>Swift_学习 (1)</a></li>
+<li class='category'><a href='/blog/categories/环境配置/'>环境配置 (1)</a></li>
+
+  </ul> 
+</section>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - 数字夜话 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
