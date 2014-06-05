@@ -379,150 +379,6 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/06/01/core-datachu-bu-liao-jie/">Core Data初步了解</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-01T21:59:25+08:00" pubdate data-updated="true">Jun 1<span>st</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>技术预览</h2>
-
-<h4>核心数据(Core Data)的特性</h4>
-
-<p>核心数据框架提供了一般化与自动化的处理对象生命周期、对象图处理与对象持久化的的共同解决方案。它包括的特性有:</p>
-
-<ul>
-<li>改变历史记录与支持撤销<br/>
-核心数据提供了在文本编辑的基础上支持撤销与重做的功能。</li>
-<li>关系保存 <br/>
-核心数据迁移改变,包括对象间的关系一致性。</li>
-<li>惰性<br/>
-核心数据能够通过烂加载对象的方式来减少程序的内存开销。它也支持实现部分惰性,和共享copy-on-write(COW)<a href="http://en.wikipedia.org/wiki/Copy-on-write">[维基]</a><a href="http://www.cnblogs.com/chenglei/archive/2009/08/06/1540175.html">[中文]</a>。cow简单来多，就是对于有读写操作的对象来说，在生成对象时，并不直接开辟内存，而是将拷贝对象生成能存延迟到写操作。即，在读对象数据时，直接去读原来的对象；而当到写数据（改变对象值）才去申请内存，生成新对象。</li>
-<li>自动验证属性值<br/>
-核心数据通过KVC验证方法来保证私有值在合适的范围之内，以便于使绑定的值有效。</li>
-<li>方案迁移</li>
-<li>可选整合应用程序控制层来支持用户接口同步</li>
-<li>完全的、自动的支持Key-value-coding和key－value－observing.</li>
-<li>在内存与用户界面中分组、过滤与组织数据</li>
-<li>多样的查询规则</li>
-<li>合并策略</li>
-</ul>
-
-
-<p>核心数据提供了对象图(object graph)管理与为程序基础与cocoa提供持续的使用功能。那么什么是核心数据?</p>
-
-<ul>
-<li>对象映射(object－relational)</li>
-<li>自动持续化的数据(automatic data persistence)</li>
-<li>高效的存取(efficient access)</li>
-</ul>
-
-
-<h4>为什么你要使用core Data ?</h4>
-
-<ul>
-<li>更少的内存开销。</li>
-<li>更快的启动速度。</li>
-<li>更少的数据库操作步骤。</li>
-</ul>
-
-
-<h4>核心数据误区</h4>
-
-<h2>核心数据的本原(core data basic)</h2>
-
-<h2>管理对象模型(managed object models)</h2>
-
-<h2>使用对象模型(using a managed objects model)</h2>
-
-<h2>管理对象(managed objects)</h2>
-
-<h2>管理对象的存储方法(Managed Object Accessor Methods)</h2>
-
-<h2>创建与删除管理对象(creating and deleting managed objects)</h2>
-
-<h2>取得管理对象(fetching managed objects)</h2>
-
-<h2>使用管理对象(using managed objects)</h2>
-
-<h2>对象生命周期管理(objectlifetime management)</h2>
-
-<h2>关系与特性获取(relationships and fetched properties)</h2>
-
-<h2>非标准持久化属性(non-standar persistent attributes)</h2>
-
-<h2>管理对象验证(managed object validation)</h2>
-
-<h2>惰性与唯一性(Faulting and Uniquing)</h2>
-
-<h2>使用持久化存储(using persistent stores)</h2>
-
-<h2>核心数据与cocoa绑定(core data and cocoa bindings)</h2>
-
-<h2>改变管理(change management)</h2>
-
-<h2>持久化存储特性(persistent store features)</h2>
-
-<h2>核心数据协作(concurrency with core data)</h2>
-
-<h2>核心数据性能(core data performance)</h2>
-
-<h2>核心数据故障处理(troubleshooting core data)</h2>
-
-<h2>高效的导入数据(efficiently importing data)</h2>
-
-<h4>核心数据架构(core data architecture)</h4>
-
-<ul>
-<li>对象管理（managed objects): NSManagedObject、NSManagedObjectContext</li>
-<li>数据存储(data storage): NSPersistentStore</li>
-<li>管理你的模型(managing your model): NSManagedObjectModel</li>
-<li>实体(Entities): NSEntityDescription</li>
-</ul>
-
-
-<h4>关系图</h4>
-
-<p><img class="center" src="/images/blogimages/blog2_coredata_relationship.png"></p>
-
-<h4>经验法则<a href="http://en.wikipedia.org/wiki/Rule_of_thumb">(rule of thumb)</a></h4>
-
-<ul>
-<li>在空间与时间上找到平衡点</li>
-<li>在心中设计你的UI</li>
-<li>避免实体继承</li>
-<li>别把二进制大型数据对象放到数据库中</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/blog/2014/05/28/octopress-da-jian-ji-lu/">Octopress 搭建记录</a></h1>
     
     
@@ -653,10 +509,6 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2014/06/01/core-datachu-bu-liao-jie/">Core Data初步了解</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2014/05/28/octopress-da-jian-ji-lu/">Octopress 搭建记录</a>
       </li>
     
@@ -669,8 +521,7 @@
 <section> 
   <h1>文章分类</h1> 
   <ul id="categories"> 
-    <li class='category'><a href='/blog/categories/ios-ted/'>IOS_TED (1)</a></li>
-<li class='category'><a href='/blog/categories/swift-学习/'>Swift_学习 (1)</a></li>
+    <li class='category'><a href='/blog/categories/swift-学习/'>Swift_学习 (1)</a></li>
 <li class='category'><a href='/blog/categories/环境配置/'>环境配置 (1)</a></li>
 
   </ul> 
