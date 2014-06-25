@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 技术点滴 | 数字夜话的博客]]></title>
   <link href="http://dev-zhuang.github.io/blog/categories/ji-zhu-dian-di/atom.xml" rel="self"/>
   <link href="http://dev-zhuang.github.io/"/>
-  <updated>2014-06-25T11:25:33+08:00</updated>
+  <updated>2014-06-25T11:29:58+08:00</updated>
   <id>http://dev-zhuang.github.io/</id>
   <author>
     <name><![CDATA[数字夜话]]></name>
@@ -20,7 +20,8 @@
     <id>http://dev-zhuang.github.io/blog/2014/06/05/zhi-shi-dian-shou-ji</id>
     <content type="html"><![CDATA[<h4>文件类型</h4>
 
-<p>enum
+<p>```
+enum
 {</p>
 
 <pre><code>DT_UNKNOWN = 0,  // unknown type           未知类型
@@ -43,7 +44,8 @@ DT_WHT = 14     // whiteout
 #define DT_WHT DT_WHT                      
 </code></pre>
 
-<p>};</p>
+<p>};
+```</p>
 ]]></content>
   </entry>
   
