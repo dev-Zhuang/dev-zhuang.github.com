@@ -73,6 +73,655 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2014/06/05/zhi-shi-dian-shou-ji/">知识点收集(不定期更新)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-05T18:41:47+08:00" pubdate data-updated="true">Jun 5<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>文件类型</h4>
+
+<p>enum
+{</p>
+
+<pre><code>DT_UNKNOWN = 0,  // unknown type           未知类型
+#define DT_UNKNOWN DT_UNKNOWN         
+DT_FIFO = 1,     // a named pipe, or FIFO  管道类型或先进先出
+#define DT_FIFO DT_FIFO
+DT_CHR = 2,     // a character device      字符设备、流
+#define DT_CHR DT_CHR
+DT_DIR = 4,     // a directory             目录文件
+#define DT_DIR DT_DIR
+DT_BLK = 6,     // a block device          块设备
+#define DT_BLK DT_BLK
+DT_REG = 8,     // regular file            普通常规文件
+#define DT_REG DT_REG
+DT_LNK = 10,    // symbolic link           符号链接
+#define DT_LNK DT_LNK
+DT_SOCK = 12,   // local domain socket     socket套接字
+#define DT_SOCK DT_SOCK                    
+DT_WHT = 14     // whiteout                
+#define DT_WHT DT_WHT                      
+</code></pre>
+
+<p>};</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/06/05/swift-han-shu-yu-lei/">Swift 函数与类</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-05T13:22:55+08:00" pubdate data-updated="true">Jun 5<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>上一篇文章，初步了解了swift与xcode 6的内容。下面继续总结swift语法中的函数与类。</p>
+
+<h4>函数与闭包 (Functions and Closures)</h4>
+
+<hr />
+
+<p>swift函数定义规则是：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">func</span> <span class="err">函数名</span><span class="p">(</span><span class="err">参数名</span><span class="p">:</span><span class="err">参数类型</span><span class="p">,</span><span class="err">参数名</span><span class="p">:</span><span class="err">参数类型</span><span class="p">,</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="p">)</span><span class="o">-&gt;</span> <span class="err">返回值类型</span> <span class="p">{</span>
+</span><span class='line'>    <span class="sr">//</span><span class="err">函数主体</span>
+</span><span class='line'>    <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="sr">//</span><span class="err">例子</span>
+</span><span class='line'><span class="n">func</span> <span class="n">sumOf</span><span class="p">(</span><span class="ss">numbers</span><span class="p">:</span> <span class="no">Int</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="no">Int</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">var</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">number</span> <span class="k">in</span> <span class="n">numbers</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">sum</span> <span class="o">+=</span> <span class="n">number</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">sum</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">sumOf</span><span class="p">()</span>              <span class="sr">//</span> <span class="ss">result</span><span class="p">:</span><span class="mi">0</span>
+</span><span class='line'><span class="n">sumOf</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">597</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>   <span class="sr">//</span> <span class="ss">result</span><span class="p">:</span><span class="mi">651</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">/*-----------</span> <span class="err">返回一个函数名，它也是一个内嵌函数</span> <span class="o">------------*/</span>
+</span><span class='line'><span class="n">func</span> <span class="err">函数名</span><span class="p">(</span><span class="err">参数名</span><span class="p">:</span><span class="err">参数类型</span><span class="p">,</span><span class="err">参数名</span><span class="p">:</span><span class="err">参数类型</span><span class="p">,</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="p">)</span><span class="o">-&gt;</span> <span class="p">(</span><span class="err">参数类型</span><span class="mi">1</span> <span class="o">-&gt;</span> <span class="err">返回类型</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">func</span> <span class="n">nestedFunc</span><span class="p">(</span><span class="err">参数名</span><span class="p">:</span><span class="err">参数类型</span><span class="mi">1</span><span class="p">)</span><span class="err">－</span><span class="o">&gt;</span><span class="err">返回类型</span><span class="mi">1</span><span class="p">{</span>
+</span><span class='line'>         <span class="k">return</span> <span class="err">返回类型</span><span class="mi">1</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">nestedFunc</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="sr">//</span><span class="err">例子</span>
+</span><span class='line'><span class="n">func</span> <span class="n">makeIncrementer</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="no">Int</span> <span class="o">-&gt;</span> <span class="no">Int</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">func</span> <span class="n">addOne</span><span class="p">(</span><span class="ss">number</span><span class="p">:</span> <span class="no">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="no">Int</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">number</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">addOne</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">var</span> <span class="n">increment</span> <span class="o">=</span> <span class="n">makeIncrementer</span><span class="p">()</span>
+</span><span class='line'><span class="n">increment</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>  <span class="sr">//</span><span class="ss">result</span><span class="p">:</span> <span class="mi">8</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">/*-----------</span> <span class="err">把函数作为函数的一个参数</span> <span class="o">------------*/</span>
+</span><span class='line'><span class="n">func</span> <span class="err">函数名</span><span class="p">(</span><span class="err">参数名</span><span class="p">:</span><span class="err">参数类型</span><span class="p">,</span><span class="err">函数名</span><span class="p">:</span><span class="err">参数类型</span> <span class="o">-&gt;</span> <span class="err">返回类型</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="err">返回类型</span><span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="sr">//</span><span class="err">例子</span><span class="p">,</span><span class="err">判断是否存在小于</span><span class="mi">10</span><span class="err">的数字</span>
+</span><span class='line'><span class="n">func</span> <span class="n">hasAnyMatches</span><span class="p">(</span><span class="ss">list</span><span class="p">:</span> <span class="no">Int</span><span class="o">[]</span><span class="p">,</span> <span class="ss">condition</span><span class="p">:</span> <span class="no">Int</span> <span class="o">-&gt;</span> <span class="no">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="no">Bool</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">list</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">condition</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="kp">true</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kp">false</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">func</span> <span class="n">lessThanTen</span><span class="p">(</span><span class="ss">number</span><span class="p">:</span> <span class="no">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="no">Bool</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">10</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">var</span> <span class="n">numbers</span> <span class="o">=</span> <span class="o">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="o">]</span>
+</span><span class='line'><span class="n">hasAnyMatches</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="n">lessThanTen</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+* 返回类型支持返回多个值。方法是使用括号括住返回值:(rA,rB,rC)<br/>
+* 参数列表也支持输入一组有效的参数值,将以数组形式传入函数。<br/>
+* <code>内嵌函数</code>函数可以互相嵌套，内部函数可以使用外部函数的值。<br/>
+* 函数可以作为一个类型被返回。<br/>
+* 函数可以作为一个参数被传入到另外一个函数。</p>
+
+<h4>闭包(Closure)</h4>
+
+<p>闭包是一个不显示参数与返回类型的特殊函数，你可以通过闭包来写一个匿名函数，将主体写在<code>{}</code>中，用<code>in</code>区分<code>主体</code>与<code>参数值</code>、<code>返回类型</code>。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="p">(</span><span class="err">参数名</span><span class="p">:</span><span class="err">参数类型</span><span class="p">)</span><span class="o">-&gt;</span><span class="err">返回类型</span> <span class="k">in</span>
+</span><span class='line'>    <span class="sr">//</span><span class="n">closure</span> <span class="n">body</span>
+</span><span class='line'>    <span class="k">return</span> <span class="err">返回类型值</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="sr">//</span> <span class="err">例子</span><span class="p">,</span><span class="err">返回一个包含运行闭包后的结果集合。先看看</span><span class="n">map</span><span class="err">的定义</span><span class="p">:</span>
+</span><span class='line'><span class="sr">//</span><span class="err">—————————————</span><span class="k">begin</span><span class="err">—————————————————</span>
+</span><span class='line'><span class="sr">//</span><span class="o">/</span> <span class="no">Return</span> <span class="n">a</span> <span class="nb">Array</span> <span class="n">containing</span> <span class="n">the</span> <span class="n">results</span> <span class="n">of</span> <span class="n">calling</span>
+</span><span class='line'><span class="sr">//</span><span class="o">/</span> <span class="sb">`transform(x)`</span> <span class="n">on</span> <span class="n">each</span> <span class="n">element</span> <span class="sb">`x`</span> <span class="n">of</span> <span class="sb">`self`</span>
+</span><span class='line'><span class="sr">//</span><span class="o">/</span> <span class="err">返回一组</span><span class="p">(</span><span class="err">每个子元素都</span><span class="p">)</span><span class="err">调用闭包后的结果集合</span>
+</span><span class='line'>    <span class="n">func</span> <span class="n">map</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;</span><span class="p">(</span><span class="ss">transform</span><span class="p">:</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">U</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">U</span><span class="o">[]</span>
+</span><span class='line'><span class="sr">//</span><span class="err">—————————————</span><span class="k">end</span><span class="err">—————————————————</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">var</span> <span class="n">numbers</span> <span class="o">=</span> <span class="o">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="o">]</span>
+</span><span class='line'><span class="n">var</span> <span class="n">result</span>  <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="p">(</span><span class="ss">number</span><span class="p">:</span> <span class="no">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="no">Int</span> <span class="k">in</span>
+</span><span class='line'>    <span class="n">let</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">number</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">result</span>
+</span><span class='line'><span class="p">})</span>
+</span><span class='line'><span class="n">println</span><span class="p">(</span><span class="s2">&quot;\(result)&quot;</span><span class="p">)</span>  <span class="sr">//</span> <span class="ss">result</span><span class="p">:</span> <span class="o">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">36</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">var</span> <span class="n">result</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">2</span><span class="o">]</span><span class="p">){</span><span class="vg">$0</span><span class="o">&gt;</span><span class="vg">$1</span><span class="p">}</span>      <span class="sr">//</span><span class="err">结果执行过程看下图</span>
+</span><span class='line'><span class="n">println</span><span class="p">(</span><span class="s2">&quot;\(result)&quot;</span><span class="p">);</span> <span class="sr">//</span><span class="ss">result</span><span class="p">:</span><span class="o">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img class="center" src="/images/blogimages/blog4_swift-01.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;"></p>
+
+<h4>对象和类(Objects and Classes)</h4>
+
+<p>类的定义如下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="ss">classname</span><span class="p">:</span><span class="n">inheritType</span><span class="p">{</span><span class="o">//</span><span class="ss">:inheritType</span> <span class="err">是继承对象。在这里是可选值。</span>
+</span><span class='line'><span class="sr">//</span><span class="n">here</span> <span class="n">is</span> <span class="n">your</span> <span class="n">code</span>
+</span><span class='line'>  <span class="sr">//</span><span class="n">properties</span>
+</span><span class='line'>      <span class="n">var</span> <span class="n">aString</span> <span class="p">:</span> <span class="nb">String</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'><span class="sr">//</span><span class="o">//</span>      <span class="err">注意不允许在</span><span class="n">set</span><span class="err">方法中对自身值进行赋值，否则将导致死循环。</span>
+</span><span class='line'><span class="sr">//</span>        <span class="n">set</span> <span class="p">{</span><span class="o">//</span><span class="err">默认传入值用</span><span class="n">newValue</span><span class="err">表示，也可以用</span> <span class="n">set</span> <span class="p">(</span><span class="n">newname</span><span class="p">)</span> <span class="err">来设置一个新值的别名</span>
+</span><span class='line'><span class="sr">//</span>            <span class="n">println</span><span class="p">(</span><span class="s2">&quot;set value as \(newValue)&quot;</span><span class="p">)</span> <span class="sr">//</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;set value as \(newname)&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="sr">//</span>        <span class="p">}</span>
+</span><span class='line'><span class="sr">//</span>
+</span><span class='line'><span class="sr">//</span>        <span class="n">get</span> <span class="p">{</span>
+</span><span class='line'><span class="sr">//</span>            <span class="k">return</span> <span class="nb">self</span><span class="o">.</span><span class="n">aString</span>
+</span><span class='line'><span class="sr">//</span>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">//</span><span class="o">//</span>   <span class="err">注意，</span><span class="n">set</span> <span class="err">和</span><span class="n">get</span><span class="err">必须同时存在，否则编译器报错。</span>
+</span><span class='line'><span class="sr">//</span><span class="o">//</span>        <span class="n">willSet</span><span class="err">和</span><span class="n">didSet</span><span class="err">必须同时存在。</span>
+</span><span class='line'><span class="sr">//</span><span class="o">//</span>        <span class="n">set</span><span class="err">，</span><span class="n">get</span><span class="err">和</span><span class="n">willSet</span><span class="err">，</span><span class="n">didSet</span><span class="err">不能同时存在</span>
+</span><span class='line'>        <span class="n">willSet</span> <span class="p">(</span><span class="n">anewvalue</span><span class="p">){</span> <span class="sr">//</span><span class="err">这里使用了新值的别名</span><span class="n">anewvalue</span><span class="err">，默认为</span><span class="n">newValue</span>
+</span><span class='line'>            <span class="n">println</span><span class="p">(</span><span class="s2">&quot;self.aString:\(self.aString) set as newValue:\(anewvalue)&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="n">didSet</span> <span class="p">{</span>
+</span><span class='line'>            <span class="n">println</span><span class="p">(</span><span class="s2">&quot;after set \(self.aString)&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>        <span class="sr">//</span> <span class="n">methodes</span>
+</span><span class='line'>  <span class="n">init</span><span class="p">(){</span> <span class="sr">//</span><span class="err">构造方法，若不添加编译器将会报错。</span>
+</span><span class='line'>      <span class="k">super</span><span class="o">.</span><span class="n">init</span><span class="p">();</span><span class="o">//</span><span class="err">调用父类的构造方法。注意：这里必须顺序，先初始化父类构造方法，子类才能调用父类属性与方法。</span>
+</span><span class='line'>      <span class="nb">self</span><span class="o">.</span><span class="n">aString</span> <span class="o">=</span> <span class="n">aStr</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="n">deinit</span><span class="p">{</span><span class="o">//</span><span class="err">析构方法，可选方法：此方法不需要参数</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'><span class="sr">/*</span>
+</span><span class='line'><span class="sr"> override func aFuncInInheritType(){/</span><span class="o">/</span><span class="err">父类方法重写</span><span class="o">.</span><span class="err">若需要重写父类方法，可以使用</span><span class="n">override</span><span class="err">关键字</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">*</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">var</span> <span class="ss">aclass</span><span class="p">:</span><span class="no">MyClass</span> <span class="o">=</span> <span class="no">MyClass</span><span class="p">(</span><span class="ss">aStr</span><span class="p">:</span><span class="s2">&quot;hello”);//此处willSet和didSet方法不执行。只执行了set和get方法</span>
+</span><span class='line'><span class="s2">    aclass.aString = &quot;</span><span class="n">hello</span><span class="p">,</span><span class="n">word</span><span class="err">”</span><span class="p">;</span><span class="o">//</span><span class="err">此处执行</span><span class="n">willSet</span><span class="err">和</span><span class="n">didSet</span><span class="err">。说明</span><span class="n">willSet</span><span class="err">、</span><span class="n">didSet</span><span class="err">在初始化时不调用，</span><span class="n">set</span><span class="err">、</span><span class="n">get</span><span class="err">方法每次对其进行赋值，都会被调用。</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>处理变量的可选值时,你可以在操作(比如方法、属性和子脚本)之前加?。如果?之前的 值是 nil,?后面的东西都会被忽略,并且整个表达式返回 nil。否则,?之后的东西都会被运行。</p>
+
+<h4>枚举与结构体(Enumerations and Structures)</h4>
+
+<h5>枚举用enum来定义：<code>enum 枚举名:枚举类型{枚举体}</code>，枚举类型可选。例如：</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="sr">//</span><span class="err">定义扑克的</span><span class="n">A</span><span class="err">－</span><span class="n">K</span><span class="err">，数值从</span><span class="mi">1</span><span class="err">开始增加，且定义一个</span><span class="n">simpleDescription</span><span class="err">函数，用于输出切换数值和名称。</span>
+</span><span class='line'><span class="n">enum</span> <span class="ss">Rank</span><span class="p">:</span> <span class="no">Int</span> <span class="p">{</span> <span class="sr">//</span><span class="err">若去掉</span><span class="ss">:Int</span> <span class="err">则不允许赋值</span><span class="no">Ace</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'>        <span class="k">case</span> <span class="no">Ace</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'>        <span class="k">case</span> <span class="no">Two</span><span class="p">,</span> <span class="no">Three</span><span class="p">,</span> <span class="no">Four</span><span class="p">,</span> <span class="no">Five</span><span class="p">,</span> <span class="no">Six</span><span class="p">,</span> <span class="no">Seven</span><span class="p">,</span> <span class="no">Eight</span><span class="p">,</span> <span class="no">Nine</span><span class="p">,</span> <span class="no">Ten</span>
+</span><span class='line'>        <span class="k">case</span> <span class="no">Jack</span><span class="p">,</span> <span class="no">Queen</span><span class="p">,</span> <span class="no">King</span>
+</span><span class='line'>        <span class="n">func</span> <span class="n">simpleDescription</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+</span><span class='line'>            <span class="n">switch</span> <span class="nb">self</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">case</span> <span class="no">Rank</span><span class="o">.</span><span class="n">Ace</span><span class="p">:</span>
+</span><span class='line'>                <span class="k">return</span> <span class="s2">&quot;ace&quot;</span>
+</span><span class='line'>            <span class="k">case</span> <span class="no">Rank</span><span class="o">.</span><span class="n">Jack</span><span class="p">:</span>
+</span><span class='line'>                <span class="k">return</span> <span class="s2">&quot;jack&quot;</span>
+</span><span class='line'>            <span class="k">case</span> <span class="o">.</span><span class="n">Queen</span><span class="p">:</span>            <span class="sr">//</span><span class="err">可用</span><span class="sb">`.Queen`</span><span class="err">表示</span><span class="no">Rank</span><span class="o">.</span><span class="n">Queen</span>
+</span><span class='line'>                <span class="k">return</span> <span class="s2">&quot;queen&quot;</span>
+</span><span class='line'>            <span class="k">case</span> <span class="o">.</span><span class="n">King</span><span class="p">:</span>
+</span><span class='line'>                <span class="k">return</span> <span class="s2">&quot;king&quot;</span>
+</span><span class='line'>            <span class="ss">default</span><span class="p">:</span>
+</span><span class='line'>                <span class="k">return</span> <span class="nb">String</span><span class="p">(</span><span class="nb">self</span><span class="o">.</span><span class="n">toRaw</span><span class="p">())</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="n">let</span> <span class="n">queen</span> <span class="o">=</span> <span class="no">Rank</span><span class="o">.</span><span class="n">Queen</span>            <span class="sr">//</span><span class="err">枚举一个</span><span class="n">ace</span>
+</span><span class='line'><span class="n">let</span> <span class="n">queenRawValue</span> <span class="o">=</span> <span class="n">queen</span><span class="o">.</span><span class="n">toRaw</span><span class="p">()</span>          <span class="sr">//</span><span class="err">切换为数值，</span><span class="ss">result</span><span class="p">:</span><span class="mi">12</span>
+</span><span class='line'><span class="n">var</span> <span class="n">des</span> <span class="o">=</span> <span class="n">queen</span><span class="o">.</span><span class="n">simpleDescription</span><span class="p">()</span>      <span class="sr">//</span><span class="err">输出枚举字符描述</span><span class="p">,</span><span class="ss">result</span><span class="p">:</span><span class="n">ace</span>
+</span><span class='line'><span class="k">if</span> <span class="n">let</span> <span class="n">convertedRank</span> <span class="o">=</span> <span class="no">Rank</span><span class="o">.</span><span class="n">fromRaw</span><span class="p">(</span><span class="n">queenRawValue</span><span class="p">)</span> <span class="p">{</span> <span class="sr">//</span><span class="err">将</span><span class="mi">12</span><span class="err">转换为枚举类型，等价于</span><span class="no">Rank</span><span class="o">.</span><span class="n">Queen</span>
+</span><span class='line'>            <span class="n">let</span> <span class="n">threeDescription</span> <span class="o">=</span> <span class="n">convertedRank</span><span class="o">.</span><span class="n">simpleDescription</span><span class="p">()</span>
+</span><span class='line'>            <span class="n">println</span><span class="p">(</span><span class="s2">&quot;\(threeDescription)&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>toRaw()转换为数值，fromRaw(avalue)将avalue转换为枚举型。</p>
+
+<h4>接口与扩展(Protocols and Extensions)</h4>
+
+<p>swift中同样用<code>protocol</code>来声明接口，类、枚举和结构体都可以实现接口。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">protocol</span> <span class="no">ExampleProtocol</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">var</span> <span class="ss">simpleDescription</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
+</span><span class='line'>    <span class="n">mutating</span> <span class="n">func</span> <span class="n">adjust</span><span class="p">()</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">SimpleClass</span><span class="p">:</span> <span class="no">ExampleProtocol</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">var</span> <span class="ss">simpleDescription</span><span class="p">:</span> <span class="nb">String</span> <span class="o">=</span> <span class="s2">&quot;A very simple class.&quot;</span>
+</span><span class='line'>    <span class="n">var</span> <span class="ss">anotherProperty</span><span class="p">:</span> <span class="no">Int</span> <span class="o">=</span> <span class="mi">69105</span>
+</span><span class='line'>    <span class="n">func</span> <span class="n">adjust</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">simpleDescription</span> <span class="o">+=</span> <span class="s2">&quot;  Now 100% adjusted.&quot;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">struct</span> <span class="ss">SimpleStructure</span><span class="p">:</span> <span class="no">ExampleProtocol</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">var</span> <span class="ss">simpleDescription</span><span class="p">:</span> <span class="nb">String</span> <span class="o">=</span> <span class="s2">&quot;A simple structure&quot;</span>
+</span><span class='line'>    <span class="n">mutating</span> <span class="n">func</span> <span class="n">adjust</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">simpleDescription</span> <span class="o">+=</span> <span class="s2">&quot; (adjusted)&quot;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>mutating 用于修饰一个可被修改的函数体。当接口被类继承时，不需要用mutating 来重写方法体，当接口被枚举和结构体的使用，使用mutating关键字来重新修改结构体。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">extension</span> <span class="no">Int</span><span class="p">{</span>
+</span><span class='line'>    <span class="n">func</span> <span class="n">descript</span><span class="p">()</span><span class="o">-&gt;</span><span class="nb">String</span><span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="s2">&quot;int value is:\(self)&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">extension</span> <span class="ss">Int</span><span class="p">:</span> <span class="no">ExampleProtocol</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">var</span> <span class="ss">simpleDescription</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="s2">&quot;The number \(self)&quot;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="n">mutating</span> <span class="n">func</span> <span class="n">adjust</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nb">self</span> <span class="o">+=</span> <span class="mi">42</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>使用extension为某个类型扩展变量或者方法。当运行时赋值对象与定义变量类型不符时，只实现变量类型的那部分实现。例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">var</span> <span class="ss">simpleClassA</span><span class="p">:</span> <span class="no">SimpleClass</span> <span class="o">=</span> <span class="no">SimpleClass</span><span class="p">();</span>
+</span><span class='line'><span class="n">simpleClassA</span><span class="o">.</span><span class="n">adjust</span><span class="p">();</span>
+</span><span class='line'><span class="n">let</span> <span class="ss">protocolValue</span><span class="p">:</span> <span class="no">ExampleProtocol</span> <span class="o">=</span> <span class="n">simpleClassA</span><span class="p">;</span>  <span class="sr">//</span><span class="err">把</span><span class="n">simpleClass</span><span class="err">类赋值给</span><span class="n">protocolValue</span><span class="err">，</span><span class="n">protocolValue</span><span class="err">为接口类型时，编译器只将</span><span class="no">SimpleClass</span><span class="err">实现</span><span class="no">ExampleProtocol</span> <span class="err">赋值给</span><span class="n">protocolValue</span><span class="err">，所以你不能通过</span><span class="n">protocolValue</span><span class="err">调用</span><span class="n">simpleclassA</span><span class="err">的属性或方法。</span>
+</span><span class='line'><span class="n">protocolValue</span><span class="o">.</span><span class="n">simpleDescription</span>
+</span><span class='line'><span class="sr">//</span> <span class="n">protocolValue</span><span class="o">.</span><span class="n">anotherProperty</span>  <span class="sr">//</span> <span class="no">Uncomment</span> <span class="n">to</span> <span class="n">see</span> <span class="n">the</span> <span class="n">error</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>泛型(Generics)</h4>
+
+<p>在尖括号里写一个名字来创建一个泛型函数或者类型。泛型类型可以在函数和方法中使用，也可以在类，枚举和结构体使用。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="sr">//</span><span class="err">函数定义的乏型</span>
+</span><span class='line'><span class="n">func</span> <span class="n">funcGenerics</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="ss">item</span><span class="p">:</span><span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="o">[]</span><span class="p">{</span> <span class="sr">//</span><span class="err">为方法定义泛型</span><span class="n">T</span><span class="p">,</span><span class="err">而</span><span class="n">T</span><span class="err">的类型是参数的格式（由参数判定）</span><span class="p">,</span><span class="err">返回是参数格式的数组</span>
+</span><span class='line'>    <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="n">T</span><span class="o">[]</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">a</span> <span class="o">+=</span> <span class="n">item</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">let</span> <span class="n">fg</span> <span class="o">=</span> <span class="n">funcGenerics</span><span class="p">(</span><span class="err">”</span><span class="n">hello</span><span class="err">”</span><span class="p">);</span><span class="o">//</span><span class="err">返回一个</span><span class="nb">String</span><span class="err">类型数组</span>
+</span><span class='line'><span class="n">let</span> <span class="n">fg2</span><span class="o">=</span> <span class="n">funcGenerics</span><span class="p">(</span><span class="mi">3</span><span class="o">.</span><span class="mi">141592628</span><span class="p">);</span><span class="o">//</span><span class="err">返回一个</span><span class="no">Double</span><span class="err">型数组。</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">//</span><span class="err">类泛型</span>
+</span><span class='line'><span class="k">class</span> <span class="n">classGenerics</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">func</span> <span class="nb">method</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span><span class="n">T</span><span class="p">){</span>
+</span><span class='line'>        <span class="n">println</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">var</span> <span class="n">gClass</span> <span class="o">=</span> <span class="n">classGenerics</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">gClass</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="s2">&quot;aString&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="sr">//</span><span class="err">或者－－－－－</span><span class="no">Double</span><span class="err">类型</span>
+</span><span class='line'><span class="n">var</span> <span class="n">gClass</span> <span class="o">=</span> <span class="n">classGenerics</span><span class="o">&lt;</span><span class="no">Double</span><span class="o">&gt;</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">gClass</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="mi">3</span><span class="o">.</span><span class="mi">1415926</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">//</span><span class="err">枚举泛型</span>
+</span><span class='line'><span class="n">enum</span> <span class="n">enumGenerics</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">{</span>
+</span><span class='line'>        <span class="k">case</span> <span class="n">a</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">case</span> <span class="n">b</span><span class="p">(</span><span class="n">T</span><span class="p">);</span>
+</span><span class='line'>        <span class="n">mutating</span> <span class="n">func</span> <span class="n">description</span><span class="p">(){</span>
+</span><span class='line'>            <span class="n">switch</span> <span class="nb">self</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">case</span> <span class="ss">a</span><span class="p">:</span><span class="n">println</span><span class="p">(</span> <span class="s2">&quot;result is none&quot;</span><span class="p">);</span>
+</span><span class='line'>                <span class="k">case</span> <span class="n">b</span><span class="p">(</span><span class="n">var</span> <span class="n">val</span><span class="p">)</span><span class="ss">:println</span><span class="p">(</span><span class="s2">&quot;result in b(T) is:\(val)”)//定义一个val变狼，类型为T</span>
+</span><span class='line'><span class="s2">            }</span>
+</span><span class='line'><span class="s2">        }</span>
+</span><span class='line'><span class="s2">    }</span>
+</span><span class='line'><span class="s2">var eg = enumGenerics&lt;Int&gt;.b(13);</span>
+</span><span class='line'><span class="s2">    eg.description();</span>
+</span><span class='line'><span class="s2">var eg = enumGenerics&lt;String&gt;.b(&quot;</span><span class="n">a</span> <span class="n">string</span> <span class="k">in</span> <span class="n">enum</span> <span class="no">Generics</span><span class="s2">&quot;);</span>
+</span><span class='line'><span class="s2">    eg.description();</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="s2">//结构泛型</span>
+</span><span class='line'><span class="s2">struct StructGenerics&lt;T&gt;{</span>
+</span><span class='line'><span class="s2">     typealias ItemType = T //定义一个T类型别名。</span>
+</span><span class='line'><span class="s2">     mutating func adjust(a: ItemType) {</span>
+</span><span class='line'><span class="s2"> println(a);</span>
+</span><span class='line'><span class="s2">     }</span>
+</span><span class='line'><span class="s2">}</span>
+</span><span class='line'><span class="s2">var sg = StructGenerics&lt;Int&gt;();</span>
+</span><span class='line'><span class="s2">    sg.adjust(34);</span>
+</span><span class='line'><span class="s2">var sg = StructGenerics&lt;String&gt;();</span>
+</span><span class='line'><span class="s2">    sg.adjust(&quot;</span><span class="n">struct</span> <span class="n">result</span> <span class="n">is</span> <span class="mi">34</span><span class="s2">&quot;);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在类型名后面使用 where 来指定一个需求列表——例如,要限定实现一个协议的类型,需要限定两个类型要相同,或者限定一个类必须有一个特定的父类。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">func</span> <span class="n">anyCommonElements</span> <span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">U</span> <span class="n">where</span> <span class="ss">T</span><span class="p">:</span> <span class="no">Sequence</span><span class="p">,</span> <span class="ss">U</span><span class="p">:</span> <span class="no">Sequence</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">GeneratorType</span><span class="o">.</span><span class="n">Element</span><span class="p">:</span> <span class="no">Equatable</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">GeneratorType</span><span class="o">.</span><span class="n">Element</span> <span class="o">==</span> <span class="n">U</span><span class="o">.</span><span class="n">GeneratorType</span><span class="o">.</span><span class="n">Element</span><span class="o">&gt;</span> <span class="p">(</span><span class="ss">lhs</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="ss">rhs</span><span class="p">:</span> <span class="n">U</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="no">Bool</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">lhsItem</span> <span class="k">in</span> <span class="n">lhs</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">for</span> <span class="n">rhsItem</span> <span class="k">in</span> <span class="n">rhs</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="n">lhsItem</span> <span class="o">==</span> <span class="n">rhsItem</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="kp">true</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kp">false</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">anyCommonElements</span><span class="p">(</span><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2014/06/04/switf-chu-xue-xi/">Switf 初学习</a></h1>
     
     
@@ -505,6 +1154,14 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/06/05/zhi-shi-dian-shou-ji/">知识点收集(不定期更新)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/05/swift-han-shu-yu-lei/">Swift 函数与类</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/06/04/switf-chu-xue-xi/">Switf 初学习</a>
       </li>
     
@@ -521,7 +1178,8 @@
 <section> 
   <h1>文章分类</h1> 
   <ul id="categories"> 
-    <li class='category'><a href='/blog/categories/swift-学习/'>Swift_学习 (1)</a></li>
+    <li class='category'><a href='/blog/categories/swift-学习/'>Swift_学习 (2)</a></li>
+<li class='category'><a href='/blog/categories/技术点滴/'>技术点滴 (1)</a></li>
 <li class='category'><a href='/blog/categories/环境配置/'>环境配置 (1)</a></li>
 
   </ul> 

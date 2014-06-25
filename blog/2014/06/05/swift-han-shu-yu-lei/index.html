@@ -1,58 +1,119 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[数字夜话的博客]]></title>
-  <link href="http://dev-zhuang.github.io/atom.xml" rel="self"/>
-  <link href="http://dev-zhuang.github.io/"/>
-  <updated>2014-06-25T11:22:08+08:00</updated>
-  <id>http://dev-zhuang.github.io/</id>
-  <author>
-    <name><![CDATA[数字夜话]]></name>
-    <email><![CDATA[jonz.tech@gmail.com]]></email>
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Swift 函数与类 - 数字夜话的博客</title>
+  <meta name="author" content="数字夜话">
 
   
-  <entry>
-    <title type="html"><![CDATA[知识点收集(不定期更新)]]></title>
-    <link href="http://dev-zhuang.github.io/blog/2014/06/05/zhi-shi-dian-shou-ji/"/>
-    <updated>2014-06-05T18:41:47+08:00</updated>
-    <id>http://dev-zhuang.github.io/blog/2014/06/05/zhi-shi-dian-shou-ji</id>
-    <content type="html"><![CDATA[<h4>文件类型</h4>
-
-<p>enum
-{</p>
-
-<pre><code>DT_UNKNOWN = 0,  // unknown type           未知类型
-#define DT_UNKNOWN DT_UNKNOWN         
-DT_FIFO = 1,     // a named pipe, or FIFO  管道类型或先进先出
-#define DT_FIFO DT_FIFO
-DT_CHR = 2,     // a character device      字符设备、流
-#define DT_CHR DT_CHR
-DT_DIR = 4,     // a directory             目录文件
-#define DT_DIR DT_DIR
-DT_BLK = 6,     // a block device          块设备
-#define DT_BLK DT_BLK
-DT_REG = 8,     // regular file            普通常规文件
-#define DT_REG DT_REG
-DT_LNK = 10,    // symbolic link           符号链接
-#define DT_LNK DT_LNK
-DT_SOCK = 12,   // local domain socket     socket套接字
-#define DT_SOCK DT_SOCK                    
-DT_WHT = 14     // whiteout                
-#define DT_WHT DT_WHT                      
-</code></pre>
-
-<p>};</p>
-]]></content>
-  </entry>
+  <meta name="description" content="上一篇文章，初步了解了swift与xcode 6的内容。下面继续总结swift语法中的函数与类。 函数与闭包 (Functions and Closures) swift函数定义规则是： 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21 &hellip;">
   
-  <entry>
-    <title type="html"><![CDATA[Swift 函数与类]]></title>
-    <link href="http://dev-zhuang.github.io/blog/2014/06/05/swift-han-shu-yu-lei/"/>
-    <updated>2014-06-05T13:22:55+08:00</updated>
-    <id>http://dev-zhuang.github.io/blog/2014/06/05/swift-han-shu-yu-lei</id>
-    <content type="html"><![CDATA[<p>上一篇文章，初步了解了swift与xcode 6的内容。下面继续总结swift语法中的函数与类。</p>
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://dev-zhuang.github.io/blog/2014/06/05/swift-han-shu-yu-lei">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="数字夜话的博客" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">数字夜话的博客</a></h1>
+  
+    <h2>开始好好写博客.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss email">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+    <li><a href="jonz.tech@gmail.com" rel="subscribe-email" title="subscribe via email">Email</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:dev-zhuang.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Swift 函数与类</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-05T13:22:55+08:00" pubdate data-updated="true">Jun 5<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>上一篇文章，初步了解了swift与xcode 6的内容。下面继续总结swift语法中的函数与类。</p>
 
 <h4>函数与闭包 (Functions and Closures)</h4>
 
@@ -225,7 +286,7 @@ DT_WHT = 14     // whiteout
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><img class="center" src="http://dev-zhuang.github.io/images/blogimages/blog4_swift-01.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;"></p>
+<p><img class="center" src="/images/blogimages/blog4_swift-01.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;"></p>
 
 <h4>对象和类(Objects and Classes)</h4>
 
@@ -605,374 +666,147 @@ DT_WHT = 14     // whiteout
 
 
 
-]]></content>
-  </entry>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-  <entry>
-    <title type="html"><![CDATA[Switf 初学习]]></title>
-    <link href="http://dev-zhuang.github.io/blog/2014/06/04/switf-chu-xue-xi/"/>
-    <updated>2014-06-04T05:31:29+08:00</updated>
-    <id>http://dev-zhuang.github.io/blog/2014/06/04/switf-chu-xue-xi</id>
-    <content type="html"><![CDATA[<p>wwwdc 2014大会,苹果推出了新语言&mdash;雨燕<code>swift</code>。虽然很多开发者如往年一样，进行了大量的神吐槽,但是为了尽快成为坐在马背上的那个人&mdash;跟着趋势走，还是来赶快学习一下雨燕吧。</p>
 
-<h2>xcode 6 beta</h2>
+<span class="byline author vcard">Posted by <span class="fn">数字夜话</span></span>
 
-<p>伴随着雨燕发布的开发工具是<a href="http://pan.baidu.com/s/1gduwNqN">xcode 6测试版</a>,下载安装后。创建单个控制器的程序,我们可以知道可以选择<code>Objective-c</code>或者<code>Swift</code>语言来进行开发。不多说，选择Swift看看差异：</p>
-
-<p><img class="center" src="http://dev-zhuang.github.io/images/blogimages/blog3_swift-01.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;"></p>
-
-<ul>
-<li><h4>工程目录更简洁</h4>
-
-<p>我们可以知道在xcode5的版本中，文件夹分为:工程文件夹、单元测试文件夹、框架文件夹和product文件夹。xcode6直接省去了框架文件夹。</p></li>
-<li><h4>类文件的简化</h4>
-
-<p>我们可以看到AppDelegate.swift和ViewController.swift两个类文件,main.storyboard一如往常。由此可知，类文件.h与.m合并为一个.swift,减少头文件与实现文件的切换过程。</p></li>
-<li><h4>更少的支持文件</h4>
-
-<p>没有了main.m程序入口文件、prefix.pch文件和国际化语言plist文件,仅仅剩下一个yourproject.plist配置文件。</p></li>
-<li><h4>没有默认的lib文件</h4>
-
-<p>通过.swift<code>import UIKit</code>和target>> build phase的link binary with lib 为空可知：<code>foundation.framework</code>、<code>UIKit.framework</code>与<code>XCTest.framework</code>三个基础框架系统不在显示，UIKit将作为必须框架自动为您导入到工程中.说明了:系统其实还是自动为您导入了一个UIKit框架，但以后link binary lib中将直接显示你导入和用到的framework&amp;lib文件。</p></li>
-</ul>
+      
 
 
-<h2>进入swift世界</h2>
-
-<p><code>Swift</code>是建立在C与Objective-c优点上的用于编写IOS和Mac OSX应用的一门新语言。为了实现更简单、灵活而有趣的编程，它摒弃了C语言兼容上的限制性，集合了更多的安全编程模块和现代的编程特性。</p>
-
-<h4>再见hello world</h4>
-
-<p>按照编程界惯例，来写一条hello world。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">println</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
 
 
-<p>恭喜您，你学会了一门语言！lol，是不是很熟悉呢？其实就是C上的log语句，只不过少了分号。对的,swift允许您：</p>
-
-<blockquote><h5>1. 不导入基础库。如i/o或者string文件。</h5>
-
-<h5>2. 不需要main函数。在任何全局范围内写语句，都会被当作是入口。囧，当然这在工程里还是从appDelegate开始。</h5>
-
-<h5>3. 不需要分号。blog主表示再次冒汗。</h5></blockquote>
-
-<h4>常量与变量</h4>
-
-<p>swift中对于简单型数据只有两个关键字,常量<code>let</code>和变量<code>var</code>。赋值时<code>变量名</code>与<code>=</code>必须用<code>空格</code>分开，否则编译器报错。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="sr">/*------对于常量，你必须给他赋一个值-----------*/</span>
-</span><span class='line'><span class="n">let</span> <span class="n">implicInt</span>    <span class="o">=</span> <span class="mi">70</span>          <span class="o">//</span><span class="err">不明确的赋值</span>
-</span><span class='line'><span class="n">let</span> <span class="n">implicDouble</span> <span class="o">=</span> <span class="mi">70</span><span class="o">.</span><span class="mi">0</span>        <span class="o">//</span><span class="err">不明确的赋值</span>
-</span><span class='line'><span class="n">let</span> <span class="ss">explicDouble</span><span class="p">:</span><span class="no">Double</span> <span class="o">=</span> <span class="mi">70</span>   <span class="o">//</span><span class="err">明确说明是</span><span class="n">double</span><span class="err">类型赋值</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">/*------对于类型转换，必须明确指出-----------*/</span>
-</span><span class='line'><span class="n">let</span> <span class="n">str</span>        <span class="o">=</span> <span class="s2">&quot;this is string&quot;</span>
-</span><span class='line'><span class="n">let</span> <span class="n">int_a</span>  <span class="o">=</span> <span class="mi">70</span>
-</span><span class='line'><span class="n">let</span> <span class="n">int_b</span>  <span class="o">=</span> <span class="mi">80</span>
-</span><span class='line'><span class="n">let</span> <span class="n">str_int</span>    <span class="o">=</span> <span class="n">str</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="n">int_a</span><span class="p">)</span> <span class="sr">//</span><span class="err">您必须明确指出需要转换类型，否则编译器会报错。</span>
-</span><span class='line'><span class="n">let</span> <span class="n">string_ing</span> <span class="o">=</span> <span class="s2">&quot;\(int_a) + \(int_b) = \(int_a+int_b)&quot;</span> <span class="sr">//</span><span class="err">另一种转换</span>
-</span></code></pre></td></tr></table></div></figure>
 
 
-<p><code>可空变量</code>既可以是一个值，也可以是一个nil来表明该值不存在。可空变量在变量名后用<code>var 变量名:数据类型?</code>表示。</p>
-
-<h4>数组与字典</h4>
-
-<p>通过<code>[]</code>来创建数组与字典，并且通过<code>索引</code>或者<code>键值</code>来创建元素。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="sr">/*------创建空数组或字典-----------*/</span>
-</span><span class='line'><span class="n">let</span> <span class="n">emptyarr</span> <span class="o">=</span> <span class="nb">String</span><span class="o">[]</span><span class="p">()</span>
-</span><span class='line'><span class="n">let</span> <span class="n">emptydic</span> <span class="o">=</span> <span class="no">Dictionary</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="n">float</span><span class="o">&gt;</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">/*------您也可以这样引用空数组-----------*/</span>
-</span><span class='line'>     <span class="n">emptyarr</span> <span class="o">=</span> <span class="o">[]</span>
-</span><span class='line'>     <span class="n">emptydic</span> <span class="o">=</span> <span class="o">[</span><span class="p">:</span><span class="o">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">/*------创建带值的数组或字典-----------*/</span>
-</span><span class='line'><span class="n">var</span> <span class="n">letters</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="s2">&quot;C&quot;</span><span class="o">]</span>
-</span><span class='line'>    <span class="n">letters</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;A&quot;</span>
-</span><span class='line'><span class="n">var</span> <span class="n">letters</span> <span class="o">=</span> <span class="o">[</span>
-</span><span class='line'>    <span class="s2">&quot;keyA&quot;</span><span class="ss">:&quot;A&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="s2">&quot;keyB&quot;</span><span class="ss">:&quot;B&quot;</span>
-</span><span class='line'><span class="o">]</span>
-</span></code></pre></td></tr></table></div></figure>
 
 
-<h4>控制流</h4>
-
-<p>使用<code>if</code>和<code>switch</code>作为控制条件，使用<code>for</code>、<code>for-in</code>、<code>while</code>和<code>do-while</code>循环迭代。它们的参数是可选的，但是主体是必须的。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="sr">/*------迭代方式-----------*/</span>
-</span><span class='line'><span class="n">let</span> <span class="n">arrs</span> <span class="o">=</span> <span class="o">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="o">]</span>
-</span><span class='line'><span class="n">var</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class='line'><span class="k">for</span> <span class="n">aVar</span> <span class="k">in</span> <span class="n">arrs</span> <span class="p">{</span>
-</span><span class='line'><span class="n">result</span> <span class="o">+=</span> <span class="n">aVar</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="n">println</span><span class="p">(</span><span class="s2">&quot;result is:\(result)&quot;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">/*------if 条件语句必须是明确的布尔值-----------*/</span>
-</span><span class='line'><span class="n">var</span> <span class="n">notAboolen</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class='line'><span class="k">if</span> <span class="n">notAboolen</span> <span class="p">{}</span>     <span class="sr">//</span><span class="err">这种方式是错的</span><span class="p">,</span><span class="n">switf</span> <span class="err">不知道</span><span class="n">notAboolen</span><span class="err">是布尔值。</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>你可以用<code>let</code>配合<code>可空变量</code>作为if的条件判断。在条件语句中可空变量赋值给let常量后,如果是nil则常量变为false布尔型;否则为true。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">var</span> <span class="ss">optVar</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="o">=</span> <span class="s2">&quot;John&quot;</span>  <span class="sr">//</span><span class="ss">result</span><span class="p">:</span> <span class="n">hello</span><span class="p">,</span><span class="n">john</span>
-</span><span class='line'><span class="sr">//o</span><span class="n">ptVar</span> <span class="o">=</span> <span class="kp">nil</span>                <span class="sr">//</span><span class="ss">result</span><span class="p">:</span> <span class="n">hello!</span>
-</span><span class='line'><span class="n">var</span> <span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;Hello!&quot;</span>
-</span><span class='line'><span class="n">let</span> <span class="nb">name</span> <span class="o">=</span> <span class="n">optVar</span>
-</span><span class='line'><span class="k">if</span> <span class="nb">name</span> <span class="p">{</span>                      <span class="sr">//</span><span class="err">也可以这样写</span> <span class="k">if</span> <span class="n">let</span> <span class="nb">name</span> <span class="o">=</span> <span class="n">optVar</span> <span class="p">{}</span>
-</span><span class='line'>    <span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;Hello, \(name)&quot;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="n">println</span><span class="p">(</span><span class="s2">&quot;\(greeting)&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>swith 语句</h4>
-
-<p><code>switch</code>语句支持所有类型的比较，不仅限与整型条件,也可以是复杂的判断操作等,无break语句。在swift中<code>default</code>条件是不能少的，并且最起码要有一条执行语句。而且执行完一个判断条件主体,程序直接跳出swith块。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">var</span> <span class="n">vResult</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'><span class="n">let</span> <span class="n">vegetable</span> <span class="o">=</span> <span class="s2">&quot;red pepper&quot;</span>
-</span><span class='line'><span class="n">switch</span> <span class="n">vegetable</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">case</span> <span class="s2">&quot;celery&quot;</span><span class="p">:</span>
-</span><span class='line'>        <span class="n">vResult</span> <span class="o">=</span> <span class="s2">&quot;Add some raisins and make ants on a log.&quot;</span>
-</span><span class='line'>    <span class="k">case</span> <span class="s2">&quot;cucumber&quot;</span><span class="p">,</span> <span class="s2">&quot;watercress&quot;</span><span class="p">:</span>
-</span><span class='line'>        <span class="n">vResult</span> <span class="o">=</span> <span class="s2">&quot;That would make a good tea sandwich.&quot;</span>
-</span><span class='line'>    <span class="k">case</span> <span class="n">let</span> <span class="n">x</span> <span class="n">where</span> <span class="n">x</span><span class="o">.</span><span class="n">hasSuffix</span><span class="p">(</span><span class="s2">&quot;pepper&quot;</span><span class="p">):</span> <span class="sr">//</span> <span class="n">x</span><span class="err">变量尾部是否包含</span><span class="n">pepper</span>
-</span><span class='line'>        <span class="n">vResult</span> <span class="o">=</span> <span class="s2">&quot;Is it a spicy \(x)?&quot;</span>
-</span><span class='line'>    <span class="ss">default</span><span class="p">:</span>                                       <span class="sr">//</span><span class="err">不可少</span>
-</span><span class='line'>        <span class="n">vResult</span> <span class="o">=</span> <span class="s2">&quot;Everything tastes good in soup.&quot;</span><span class="o">//</span><span class="err">最起码包含一条语句</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="n">println</span><span class="p">(</span><span class="s2">&quot;\(vResult)&quot;</span><span class="p">)</span>     <span class="sr">//</span> <span class="ss">result</span><span class="p">:</span><span class="no">Is</span> <span class="n">it</span> <span class="n">a</span> <span class="n">spicy</span> <span class="n">red</span> <span class="n">pepper?</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>for-in 语句</h4>
-
-<p>for-in 对于枚举一个字典,我们可以使用两个用<code>(键,值)</code>来作为枚举方式的过程变量。对比OC来说，这不失为是一种更简洁的方式。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">var</span> <span class="n">anEmployee</span> <span class="o">=</span> <span class="o">[</span>
-</span><span class='line'>    <span class="s2">&quot;company&quot;</span><span class="ss">:&quot;myCompamy&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="s2">&quot;empName&quot;</span><span class="ss">:&quot;jonz&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="s2">&quot;department&quot;</span><span class="ss">:&quot;dev&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="s2">&quot;salary&quot;</span><span class="ss">:&quot;3000&quot;</span>
-</span><span class='line'><span class="o">]</span>
-</span><span class='line'><span class="n">println</span><span class="p">(</span><span class="s2">&quot;here is an employee infomation:&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="n">anEmployee</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="n">println</span><span class="p">(</span><span class="s2">&quot;       \(key):\(value)&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="sr">/*-------the result is:--------------*/</span>
-</span><span class='line'><span class="n">here</span> <span class="n">is</span> <span class="n">an</span> <span class="n">employee</span> <span class="ss">infomation</span><span class="p">:</span>
-</span><span class='line'>    <span class="ss">empName</span><span class="p">:</span><span class="n">jonz</span>
-</span><span class='line'>    <span class="ss">department</span><span class="p">:</span><span class="n">dev</span>
-</span><span class='line'>    <span class="ss">salary</span><span class="p">:</span><span class="mi">3000</span>
-</span><span class='line'>    <span class="ss">company</span><span class="p">:</span><span class="n">myCompamy</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>使用<code>..</code>和<code>...</code>来表示范围</h4>
-
-<p>对于明确循环界限的迭代，我们可以使用<code>..</code>来作循环。比如求从0到3之间的数字和：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">4</span><span class="p">{</span> <span class="sr">//</span><span class="err">注意迭代编程中的少</span><span class="mi">1</span><span class="err">问题，这里相当于</span><span class="k">for</span> <span class="n">var</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span><span class="n">i</span><span class="o">++</span>
-</span><span class='line'>    <span class="n">count</span> <span class="o">+=</span> <span class="n">i</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="n">println</span><span class="p">(</span><span class="s2">&quot;\(count)&quot;</span><span class="p">)</span> <span class="sr">//</span><span class="n">result</span> <span class="ss">is</span><span class="p">:</span><span class="mi">6</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="mi">3</span><span class="p">{</span> <span class="sr">//</span><span class="err">注意迭代编程中的少</span><span class="mi">1</span><span class="err">问题，这里相当于</span><span class="k">for</span> <span class="n">var</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">3</span><span class="p">;</span><span class="n">i</span><span class="o">++</span>
-</span><span class='line'>    <span class="n">count</span> <span class="o">+=</span> <span class="n">i</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="n">println</span><span class="p">(</span><span class="s2">&quot;\(count)&quot;</span><span class="p">)</span> <span class="sr">//</span><span class="n">result</span> <span class="ss">is</span><span class="p">:</span> <span class="mi">6</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>我们知道，新的特性使语句更加简短,<code>..</code>不包含范围的上界，<code>...</code>包含了范围的上界.</p>
-
-<h2>end line</h2>
-
-<p>好了,就先写到这里。对于编程里的函数与类、对象，由于内容比较多将记录在下一篇blog里。</p>
-]]></content>
-  </entry>
   
-  <entry>
-    <title type="html"><![CDATA[Octopress 搭建记录]]></title>
-    <link href="http://dev-zhuang.github.io/blog/2014/05/28/octopress-da-jian-ji-lu/"/>
-    <updated>2014-05-28T23:17:39+08:00</updated>
-    <id>http://dev-zhuang.github.io/blog/2014/05/28/octopress-da-jian-ji-lu</id>
-    <content type="html"><![CDATA[<p>花了大半天的时间研究了octopress的搭建，不会命令行的悲剧。虽然网上有许多教程，但是自己做了一遍，才发现也没有那么简单。菜鸟一思考，上帝和神人就发笑。：）</p>
-
-<h2>基本搭建</h2>
-
-<p>具体的搭建，在这里就不一一详细描述，网上一抓一大把。大家可以参考一下大神们的一些博客:</p>
-
-<ul>
-<li>唐巧的技术博客里《<a href="http://blog.devtang.com/blog/2012/02/10/setup-blog-based-on-github/">像写程序一样写博客：搭建基于github的博客</a>》</li>
-<li>octopress官方步骤《<a href="http://octopress.org/docs/setup/">英文:Octopress Setup</a>》</li>
-</ul>
 
 
-<p><strong>在这里简单描述一下步骤:</strong></p>
+<time datetime="2014-06-05T13:22:55+08:00" pubdate data-updated="true">Jun 5<span>th</span>, 2014</time>
+      
 
-<p> 1.安装git环境，mac上自带git。若其他环境，请google之。<br/>
- 2.安装<a href="http://octopress.org/docs/setup/rbenv">rbenv</a>或者<a href="http://octopress.org/docs/setup/rvm/">RVM</a><br/>
- 3.使用git从github上下载octopress安装文件,并且用终端安装</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#－－－－－－－－－－－－－下载过程－－－－－－－－－－－－－－－－－－－－－－－－ 
-</span><span class='line'>git clone git://github.com/imathis/octopress.git octopress  //github上下载，等待下载完成
-</span><span class='line'>cd  octopress                                               //移动到octopress文件夹  
-</span><span class='line'>#－－－－－－－－－－－－－安装过程－－－－－－－－－－－－－－－－－－－－－－－－  
-</span><span class='line'>gem    install bundler 
-</span><span class='line'>rbenv  rehash    # If you use rbenv, rehash to be able to run the bundle command
-</span><span class='line'>bundle install
-</span><span class='line'>#－－－－－－－－－－－－－安装默认主题－－－－－－－－－－－－－－－－－－－－－－－－ 
-</span><span class='line'>rake install
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-以上步骤操作完后，输入rake preview,然后在safari上输入localhost:4000或者127.0.0.01:4000(推荐)，预览的blog主题效果。在这里，自己遇到了safari显示为空。原因是在safari7和mac os 10.9上有bug,提供的<a href="https://github.com/imathis/octopress/issues/1395">解决办法</a>见链接。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#－－－－－－－－－－－－－预览主题－－－－－－－－－－－－－－－－－－－－－－－－
-</span><span class='line'>rake preview                        //输入后，通过safari url: 127.0.0.01:4000上预览
-</span><span class='line'>#－－－－－－－－－－－－－解决预览空白方法－－－－－－－－－－－－－－－－－－－－－－－－
-</span><span class='line'># $ echo gem \"thin\" &gt;&gt; Gemfile
-</span><span class='line'># $ bundle install</span></code></pre></td></tr></table></div></figure>
-
-
-<p>4.github上创建一个博客地址。以自己的账号(用户名:dev-Zhuang)为例子，说一下步骤：<br/>
-创建github账号后，点New repository创建一个新的repository，命名(必须)为：dev-Zhuang.github.com即可。<br/>
-这里不需要到settings中勾选automatic page generate，保持代码库为空，然后将你本地的博客上传到代码库即可。自己在这一步参考了网上的资料，走了不少弯路，导致了上传过程中git不断的报错，T_T。</p>
-
-<p>5.配置博客，然后上传到github上。<br/>
-这里以后每次写完blog，都要用rake generate和rake deploy上传。配置博客过程就不在细说，自行参考相关文献。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>－－－－－－－－－－－－－设置上传地址－－－－－－－－－－－－－－－－－－－－－－－－
-</span><span class='line'>rake setup_github_pages
-</span><span class='line'>－－－－－－－－－－－－－在要求输入的地址处输入,然后输入账号密码－－－－－－－－－－
-</span><span class='line'>https://github.com/dev-Zhuang/dev-Zhuang.github.com.git
-</span><span class='line'>rake generate       //重新生成
-</span><span class='line'>rake deploy        //上传</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-6. 搭建分享平台与评论系统。<br/>
-   这一步见唐巧boy中的内容。微博平台拷贝一下代码，修改一下显示参数即可。评论系统用的是友言的,注册拷贝代码.因为改系统是根据uid和文章index来做评论依据，大家需要先注册自己的账号获取uid。so easy！</p>
-
-<p>好了，就写到这里。学习<a href="http://zh.wikipedia.org/wiki/Markdown">markdown语法</a>，写自己的博客去吧，have fun！</p>
-]]></content>
-  </entry>
+<span class="categories">
   
-</feed>
+    <a class='category' href='/blog/categories/swift-xue-xi/'>Swift_学习</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    
+    <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_xiaoyou"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1396404044678373" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+<div>
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1933910"></script>
+    <!-- UY END -->
+</div>
+
+    
+  
+  
+  
+ 
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/06/04/switf-chu-xue-xi/" title="Previous Post: Switf 初学习">&laquo; Switf 初学习</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/06/05/zhi-shi-dian-shou-ji/" title="Next Post: 知识点收集(不定期更新)">知识点收集(不定期更新) &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>我的微博</h1>
+<iframe width="260" height="400" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=zh_tw&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=6&isTitle=0&noborder=1&isWeibo=1&isFans=1&uid=3989441254&verifier=1ea82041&dpc=1"></iframe>
+</section><section>
+  <h1>最近文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/06/05/zhi-shi-dian-shou-ji/">知识点收集(不定期更新)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/05/swift-han-shu-yu-lei/">Swift 函数与类</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/04/switf-chu-xue-xi/">Switf 初学习</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/28/octopress-da-jian-ji-lu/">Octopress 搭建记录</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+<section> 
+  <h1>文章分类</h1> 
+  <ul id="categories"> 
+    <li class='category'><a href='/blog/categories/swift-学习/'>Swift_学习 (2)</a></li>
+<li class='category'><a href='/blog/categories/技术点滴/'>技术点滴 (1)</a></li>
+<li class='category'><a href='/blog/categories/环境配置/'>环境配置 (1)</a></li>
+
+  </ul> 
+</section>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - 数字夜话 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

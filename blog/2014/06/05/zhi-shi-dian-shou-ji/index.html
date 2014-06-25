@@ -5,14 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Blog Archive - 数字夜话的博客</title>
+  <title>知识点收集(不定期更新) - 数字夜话的博客</title>
   <meta name="author" content="数字夜话">
 
   
-  <meta name="description" content="Blog Archive 2014 知识点收集(不定期更新)
-Jun 05 2014 posted in 技术点滴 Swift 函数与类
-Jun 05 2014 posted in Swift_学习 Switf 初学习
-Jun 04 2014 posted in Swift_学习 &hellip;">
+  <meta name="description" content="文件类型 enum
+{ DT_UNKNOWN = 0, // unknown type 未知类型
+#define DT_UNKNOWN DT_UNKNOWN DT_FIFO = 1, // a named pipe, or FIFO 管道类型或先进先出
+#define DT_FIFO &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +21,7 @@ Jun 04 2014 posted in Swift_学习 &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dev-zhuang.github.io/blog/archives">
+  <link rel="canonical" href="http://dev-zhuang.github.io/blog/2014/06/05/zhi-shi-dian-shou-ji">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="数字夜话的博客" type="application/atom+xml">
@@ -69,77 +69,131 @@ Jun 04 2014 posted in Swift_学习 &hellip;">
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Blog Archive</h1>
+    
+      <h1 class="entry-title">知识点收集(不定期更新)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-05T18:41:47+08:00" pubdate data-updated="true">Jun 5<span>th</span>, 2014</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives">
 
 
+<div class="entry-content"><h4>文件类型</h4>
 
-  
-  <h2>2014</h2>
+<p>enum
+{</p>
 
-<article>
-  
-<h1><a href="/blog/2014/06/05/zhi-shi-dian-shou-ji/">知识点收集(不定期更新)</a></h1>
-<time datetime="2014-06-05T18:41:47+08:00" pubdate><span class='month'>Jun</span> <span class='day'>05</span> <span class='year'>2014</span></time>
+<pre><code>DT_UNKNOWN = 0,  // unknown type           未知类型
+#define DT_UNKNOWN DT_UNKNOWN         
+DT_FIFO = 1,     // a named pipe, or FIFO  管道类型或先进先出
+#define DT_FIFO DT_FIFO
+DT_CHR = 2,     // a character device      字符设备、流
+#define DT_CHR DT_CHR
+DT_DIR = 4,     // a directory             目录文件
+#define DT_DIR DT_DIR
+DT_BLK = 6,     // a block device          块设备
+#define DT_BLK DT_BLK
+DT_REG = 8,     // regular file            普通常规文件
+#define DT_REG DT_REG
+DT_LNK = 10,    // symbolic link           符号链接
+#define DT_LNK DT_LNK
+DT_SOCK = 12,   // local domain socket     socket套接字
+#define DT_SOCK DT_SOCK                    
+DT_WHT = 14     // whiteout                
+#define DT_WHT DT_WHT                      
+</code></pre>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/ji-zhu-dian-di/'>技术点滴</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2014/06/05/swift-han-shu-yu-lei/">Swift 函数与类</a></h1>
-<time datetime="2014-06-05T13:22:55+08:00" pubdate><span class='month'>Jun</span> <span class='day'>05</span> <span class='year'>2014</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/swift-xue-xi/'>Swift_学习</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2014/06/04/switf-chu-xue-xi/">Switf 初学习</a></h1>
-<time datetime="2014-06-04T05:31:29+08:00" pubdate><span class='month'>Jun</span> <span class='day'>04</span> <span class='year'>2014</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/swift-xue-xi/'>Swift_学习</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2014/05/28/octopress-da-jian-ji-lu/">Octopress 搭建记录</a></h1>
-<time datetime="2014-05-28T23:17:39+08:00" pubdate><span class='month'>May</span> <span class='day'>28</span> <span class='year'>2014</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/huan-jing-pei-zhi/'>环境配置</a></span>
-</footer>
-
-
-</article>
-
+<p>};</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">数字夜话</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-05T18:41:47+08:00" pubdate data-updated="true">Jun 5<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ji-zhu-dian-di/'>技术点滴</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    
+    <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_xiaoyou"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1396404044678373" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+<div>
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1933910"></script>
+    <!-- UY END -->
+</div>
+
+    
+  
+  
+  
+ 
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/06/05/swift-han-shu-yu-lei/" title="Previous Post: swift 函数与类">&laquo; swift 函数与类</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
 </div>

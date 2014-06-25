@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Swift_学习 | 数字夜话的博客]]></title>
   <link href="http://dev-zhuang.github.io/blog/categories/swift-xue-xi/atom.xml" rel="self"/>
   <link href="http://dev-zhuang.github.io/"/>
-  <updated>2014-06-05T09:42:28+08:00</updated>
+  <updated>2014-06-25T11:22:08+08:00</updated>
   <id>http://dev-zhuang.github.io/</id>
   <author>
     <name><![CDATA[数字夜话]]></name>
@@ -12,6 +12,403 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Swift 函数与类]]></title>
+    <link href="http://dev-zhuang.github.io/blog/2014/06/05/swift-han-shu-yu-lei/"/>
+    <updated>2014-06-05T13:22:55+08:00</updated>
+    <id>http://dev-zhuang.github.io/blog/2014/06/05/swift-han-shu-yu-lei</id>
+    <content type="html"><![CDATA[<p>上一篇文章，初步了解了swift与xcode 6的内容。下面继续总结swift语法中的函数与类。</p>
+
+<h4>函数与闭包 (Functions and Closures)</h4>
+
+<hr />
+
+<p>swift函数定义规则是：<br/>
+```ruby
+func 函数名(参数名:参数类型,参数名:参数类型,&hellip;)&ndash;> 返回值类型 {</p>
+
+<pre><code>//函数主体
+return (a,b,c)
+</code></pre>
+
+<p>}
+//例子
+func sumOf(numbers: Int&hellip;) &ndash;> Int {</p>
+
+<pre><code>var sum = 0
+for number in numbers {
+    sum += number
+}
+return sum
+</code></pre>
+
+<p>}
+sumOf()              // result:0
+sumOf(42, 597, 12)   // result:651</p>
+
+<p>/<em>&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; 返回一个函数名，它也是一个内嵌函数 &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</em>/
+func 函数名(参数名:参数类型,参数名:参数类型,&hellip;)&ndash;> (参数类型1 &ndash;> 返回类型1) {</p>
+
+<pre><code>func nestedFunc(参数名:参数类型1)－&gt;返回类型1{
+     return 返回类型1
+}
+return nestedFunc
+</code></pre>
+
+<p>}
+//例子
+func makeIncrementer() &ndash;> (Int &ndash;> Int) {</p>
+
+<pre><code>func addOne(number: Int) -&gt; Int {
+    return 1 + number
+}
+return addOne
+</code></pre>
+
+<p>}
+var increment = makeIncrementer()
+increment(7)  //result: 8</p>
+
+<p>/<em>&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; 把函数作为函数的一个参数 &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</em>/
+func 函数名(参数名:参数类型,函数名:参数类型 &ndash;> 返回类型) &ndash;> 返回类型{</p>
+
+<p>}
+//例子,判断是否存在小于10的数字
+func hasAnyMatches(list: Int[], condition: Int &ndash;> Bool) &ndash;> Bool {</p>
+
+<pre><code>for item in list {
+    if condition(item) {
+            return true
+    }
+}
+return false
+</code></pre>
+
+<p>}
+func lessThanTen(number: Int) &ndash;> Bool {</p>
+
+<pre><code>return number &lt; 10
+</code></pre>
+
+<p>}
+var numbers = [20, 19, 7, 12]
+hasAnyMatches(numbers, lessThanTen)</p>
+
+<p><code>``  
+* 返回类型支持返回多个值。方法是使用括号括住返回值:(rA,rB,rC)  
+* 参数列表也支持输入一组有效的参数值,将以数组形式传入函数。  
+*</code>内嵌函数`函数可以互相嵌套，内部函数可以使用外部函数的值。<br/>
+* 函数可以作为一个类型被返回。<br/>
+* 函数可以作为一个参数被传入到另外一个函数。</p>
+
+<h4>闭包(Closure)</h4>
+
+<p>闭包是一个不显示参数与返回类型的特殊函数，你可以通过闭包来写一个匿名函数，将主体写在<code>{}</code>中，用<code>in</code>区分<code>主体</code>与<code>参数值</code>、<code>返回类型</code>。
+```ruby
+{</p>
+
+<pre><code>(参数名:参数类型)-&gt;返回类型 in
+//closure body
+return 返回类型值
+</code></pre>
+
+<p>}
+// 例子,返回一个包含运行闭包后的结果集合。先看看map的定义:
+//—————————————begin—————————————————
+/// Return a Array containing the results of calling
+/// <code>transform(x)</code> on each element <code>x</code> of <code>self</code>
+/// 返回一组(每个子元素都)调用闭包后的结果集合</p>
+
+<pre><code>func map&lt;U&gt;(transform: (T) -&gt; U) -&gt; U[]
+</code></pre>
+
+<p>//—————————————end—————————————————</p>
+
+<p>var numbers = [20, 19, 7, 12]
+var result  = numbers.map(
+{</p>
+
+<pre><code>(number: Int) -&gt; Int in
+let result = 3 * number
+return result
+</code></pre>
+
+<p>})
+println(&ldquo;(result)&rdquo;)  // result: [60, 57, 21, 36]</p>
+
+<p>var result = sort([1,5,3,12,2]){$0>$1}      //结果执行过程看下图
+println(&ldquo;(result)&rdquo;); //result:[12,5,3,2,1]
+```
+<img class="center" src="/images/blogimages/blog4_swift-01.png" title="&ldquo;工程目录结构&rdquo;" ></p>
+
+<h4>对象和类(Objects and Classes)</h4>
+
+<p>类的定义如下：
+```
+class classname:inheritType{//:inheritType 是继承对象。在这里是可选值。
+//here is your code</p>
+
+<pre><code>//properties
+    var aString : String
+{
+</code></pre>
+
+<p>////      注意不允许在set方法中对自身值进行赋值，否则将导致死循环。
+//        set {//默认传入值用newValue表示，也可以用 set (newname) 来设置一个新值的别名
+//            println(&ldquo;set value as (newValue)&rdquo;) //println(&ldquo;set value as (newname)&rdquo;)
+//        }
+//  <br/>
+//        get {
+//            return self.aString
+//        }</p>
+
+<p>////   注意，set 和get必须同时存在，否则编译器报错。
+////        willSet和didSet必须同时存在。
+////        set，get和willSet，didSet不能同时存在</p>
+
+<pre><code>    willSet (anewvalue){ //这里使用了新值的别名anewvalue，默认为newValue
+        println("self.aString:\(self.aString) set as newValue:\(anewvalue)");
+    }
+    didSet {
+        println("after set \(self.aString)");
+    }
+}
+    // methodes
+init(){ //构造方法，若不添加编译器将会报错。
+    super.init();//调用父类的构造方法。注意：这里必须顺序，先初始化父类构造方法，子类才能调用父类属性与方法。
+    self.aString = aStr;
+}
+deinit{//析构方法，可选方法：此方法不需要参数
+
+}
+</code></pre>
+
+<p>/*</p>
+
+<pre><code>override func aFuncInInheritType(){//父类方法重写.若需要重写父类方法，可以使用override关键字
+
+}
+</code></pre>
+
+<p>*
+}</p>
+
+<p>var aclass:MyClass = MyClass(aStr:&ldquo;hello”);//此处willSet和didSet方法不执行。只执行了set和get方法</p>
+
+<pre><code>aclass.aString = "hello,word”;//此处执行willSet和didSet。说明willSet、didSet在初始化时不调用，set、get方法每次对其进行赋值，都会被调用。
+</code></pre>
+
+<p>```
+处理变量的可选值时,你可以在操作(比如方法、属性和子脚本)之前加?。如果?之前的 值是 nil,?后面的东西都会被忽略,并且整个表达式返回 nil。否则,?之后的东西都会被运行。</p>
+
+<h4>枚举与结构体(Enumerations and Structures)</h4>
+
+<h5>枚举用enum来定义：<code>enum 枚举名:枚举类型{枚举体}</code>，枚举类型可选。例如：</h5>
+
+<p>```
+//定义扑克的A－K，数值从1开始增加，且定义一个simpleDescription函数，用于输出切换数值和名称。
+enum Rank: Int { //若去掉:Int 则不允许赋值Ace = 1</p>
+
+<pre><code>    case Ace = 1
+    case Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten
+    case Jack, Queen, King
+    func simpleDescription() -&gt; String {
+        switch self {
+        case Rank.Ace:
+            return "ace"
+        case Rank.Jack:
+            return "jack"
+        case .Queen:            //可用`.Queen`表示Rank.Queen
+            return "queen"
+        case .King:
+            return "king"
+        default:
+            return String(self.toRaw())
+        }
+    }
+}
+</code></pre>
+
+<p>let queen = Rank.Queen            //枚举一个ace
+let queenRawValue = queen.toRaw()          //切换为数值，result:12
+var des = queen.simpleDescription()      //输出枚举字符描述,result:ace
+if let convertedRank = Rank.fromRaw(queenRawValue) { //将12转换为枚举类型，等价于Rank.Queen</p>
+
+<pre><code>        let threeDescription = convertedRank.simpleDescription()
+        println("\(threeDescription)")
+    }
+</code></pre>
+
+<p>```
+toRaw()转换为数值，fromRaw(avalue)将avalue转换为枚举型。</p>
+
+<h4>接口与扩展(Protocols and Extensions)</h4>
+
+<p>swift中同样用<code>protocol</code>来声明接口，类、枚举和结构体都可以实现接口。
+```
+protocol ExampleProtocol {</p>
+
+<pre><code>var simpleDescription: String { get }
+mutating func adjust()
+</code></pre>
+
+<p>}
+class SimpleClass: ExampleProtocol {</p>
+
+<pre><code>var simpleDescription: String = "A very simple class."
+var anotherProperty: Int = 69105
+func adjust() {
+    simpleDescription += "  Now 100% adjusted."
+}
+</code></pre>
+
+<p>}</p>
+
+<p>struct SimpleStructure: ExampleProtocol {</p>
+
+<pre><code>var simpleDescription: String = "A simple structure"
+mutating func adjust() {
+    simpleDescription += " (adjusted)"
+}
+</code></pre>
+
+<p>}
+```
+mutating 用于修饰一个可被修改的函数体。当接口被类继承时，不需要用mutating 来重写方法体，当接口被枚举和结构体的使用，使用mutating关键字来重新修改结构体。</p>
+
+<p>```
+extension Int{</p>
+
+<pre><code>func descript()-&gt;String{
+    return "int value is:\(self)";
+}
+</code></pre>
+
+<p>}
+extension Int: ExampleProtocol {</p>
+
+<pre><code>var simpleDescription: String {
+return "The number \(self)"
+}
+mutating func adjust() {
+    self += 42
+}
+</code></pre>
+
+<p>}
+```
+使用extension为某个类型扩展变量或者方法。当运行时赋值对象与定义变量类型不符时，只实现变量类型的那部分实现。例如：</p>
+
+<p><code>
+var simpleClassA: SimpleClass = SimpleClass();
+simpleClassA.adjust();
+let protocolValue: ExampleProtocol = simpleClassA;  //把simpleClass类赋值给protocolValue，protocolValue为接口类型时，编译器只将SimpleClass实现ExampleProtocol 赋值给protocolValue，所以你不能通过protocolValue调用simpleclassA的属性或方法。
+protocolValue.simpleDescription
+// protocolValue.anotherProperty  // Uncomment to see the error
+</code></p>
+
+<h4>泛型(Generics)</h4>
+
+<p>在尖括号里写一个名字来创建一个泛型函数或者类型。泛型类型可以在函数和方法中使用，也可以在类，枚举和结构体使用。</p>
+
+<p>```
+//函数定义的乏型
+func funcGenerics<T>(item:T) &ndash;> T[]{ //为方法定义泛型T,而T的类型是参数的格式（由参数判定）,返回是参数格式的数组</p>
+
+<pre><code>var a = T[]();
+a += item;
+return a;
+</code></pre>
+
+<p>}
+let fg = funcGenerics(”hello”);//返回一个String类型数组
+let fg2= funcGenerics(3.141592628);//返回一个Double型数组。</p>
+
+<p>//类泛型
+class classGenerics<T> {</p>
+
+<pre><code>func method(a:T){
+    println(a);
+}
+</code></pre>
+
+<p>}
+var gClass = classGenerics<String>();</p>
+
+<pre><code>gClass.method("aString");
+</code></pre>
+
+<p>//或者－－－－－Double类型
+var gClass = classGenerics<Double>();</p>
+
+<pre><code>gClass.method(3.1415926);
+</code></pre>
+
+<p>//枚举泛型
+enum enumGenerics<T>{</p>
+
+<pre><code>    case a;
+    case b(T);
+    mutating func description(){
+        switch self {
+            case a:println( "result is none");
+            case b(var val):println("result in b(T) is:\(val)”)//定义一个val变狼，类型为T
+        }
+    }
+}
+</code></pre>
+
+<p>var eg = enumGenerics<Int>.b(13);</p>
+
+<pre><code>eg.description();
+</code></pre>
+
+<p>var eg = enumGenerics<String>.b(&ldquo;a string in enum Generics&rdquo;);</p>
+
+<pre><code>eg.description();
+</code></pre>
+
+<p>//结构泛型
+struct StructGenerics<T>{</p>
+
+<pre><code> typealias ItemType = T //定义一个T类型别名。
+ mutating func adjust(a: ItemType) {
+println(a);
+ }
+</code></pre>
+
+<p>}
+var sg = StructGenerics<Int>();</p>
+
+<pre><code>sg.adjust(34);
+</code></pre>
+
+<p>var sg = StructGenerics<String>();</p>
+
+<pre><code>sg.adjust("struct result is 34");
+</code></pre>
+
+<p><code>
+在类型名后面使用 where 来指定一个需求列表——例如,要限定实现一个协议的类型,需要限定两个类型要相同,或者限定一个类必须有一个特定的父类。
+</code>
+func anyCommonElements &lt;T, U where T: Sequence, U: Sequence, T.GeneratorType.Element: Equatable, T.GeneratorType.Element == U.GeneratorType.Element> (lhs: T, rhs: U) &ndash;> Bool {</p>
+
+<pre><code>for lhsItem in lhs {
+    for rhsItem in rhs {
+        if lhsItem == rhsItem {
+            return true
+        }
+    }
+}
+return false
+</code></pre>
+
+<p>}
+anyCommonElements([1, 2, 3], [3])
+```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Switf 初学习]]></title>
