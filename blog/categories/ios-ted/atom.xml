@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: IOS_TED | 数字夜话的博客]]></title>
+  <link href="http://dev-zhuang.github.io/blog/categories/ios-ted/atom.xml" rel="self"/>
+  <link href="http://dev-zhuang.github.io/"/>
+  <updated>2014-06-30T23:47:01+08:00</updated>
+  <id>http://dev-zhuang.github.io/</id>
+  <author>
+    <name><![CDATA[数字夜话]]></name>
+    <email><![CDATA[jonz.tech@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[明白AVFoundation]]></title>
+    <link href="http://dev-zhuang.github.io/blog/2014/06/30/ming-bai-avfoundation/"/>
+    <updated>2014-06-30T09:04:03+08:00</updated>
+    <id>http://dev-zhuang.github.io/blog/2014/06/30/ming-bai-avfoundation</id>
+    <content type="html"><![CDATA[<p>AVFoundation 基本函括了基本的音频操作，信息捕获、编辑基本信息与影片读写。这里只说简单的音频操作。</p>
+
+<h4>什么时候使用AVFoundation</h4>
+
+<p><strong>获取媒体属性<br/>
+</strong>自定义播放UI和行为<br/>
+<strong>组成与组合媒体<br/>
+</strong>重定义媒体信息<br/>
+**控制相机特性</p>
+
+<h4>AVFoundation位置</h4>
+
+<p>AVFoundation 位于核心层上层，在UIKit下层。
+{% img center /images/blogimages/blog5_avfoundation-1.png &ldquo;工程目录结构&rdquo; %}</p>
+
+<h4>AVFoundation类分组</h4>
+
+<p>AVFoundation类分组主要可以分成4部分：播放设置、信息捕获、编辑和读写4块。</p>
+
+<h4>播放（playback）</h4>
+
+<h5>AVAsset</h5>
+
+<p>AVAsset是定时的视听媒体，它可以是视频、影片、歌曲、播客节目；可以是本地或者远程的；也可以是限定或者非限定的流；<br/>
+获取一个AVAsset：程序捆绑；媒体库；图片库；获取网络地址；
+AVAsset的组成：AVAssetTrackSegment->AVAssetTrack->AVAsset;
+AVAssect获取值:也许会花费一定时间：读取不同的文件格式、大文件文件信息读取，网络文件读取 <br/>
+异步键值加载协议：告诉我们什么时候值有效。</p>
+
+<h5>AVPlayer</h5>
+
+<p>AVPlayer是一个控制对象：播放、停止和速率；不同AVAsset可以有不同的播放属性。
+一个AVPlayer可以有多个AVAsset，OC通过AVPlayerItem来协调AVAsst和AVPlayer之间的关系。AVPlayerItem与AVAsset一样，同样有AVPlayerItemTrack对象。</p>
+
+<h5>AVPlayerLayer</h5>
+
+<p>播放对象与视图之间的现实关系需要通过AVPlayerLayer来显示。</p>
+
+<p>播放步骤集合：</p>
+
+<blockquote><p>1.创建一个AVAsset<br/>
+2.告诉asset的Track可以被加载了<br/>
+3.一旦加载，为asset创建一个PlayerItem<br/>
+4.把Item赋值给Player<br/>
+5.把Player复制给PlayerLayer<br/>
+6.等待直到Item准备好播放，然后开始播放。
+```ruby
+AVAsset <em>asset = [AVURLAsset URLAssetWithURL:fileURL options:nil];
+NSArray </em>requestKeys = [NSArray arrayWithObjects:@“tracks”,@”playable”,nil];
+[asset loadValuesAsynchoronouslyForKeys:requestKeys competionHandler:^{</p>
+
+<pre><code>dispatch_async(dispatch_get_main_queue(),^{
+    //complete block here
+    NSError *err = nil;
+    AVKeyValueStatus status =[asset statusOfValueForKey:@“tracks”,error:&amp;error];
+    if(status == AVKeyValueStatusLoaded){
+        self.PlayerItem = [AVPlayerItem playerItemWithAsset:asset];
+        self.player = [AVPlayer playerWithPlayerItem:playerItem];
+        [playerView  setPlayer:player];
+    }else{
+        //don’t load ! need to do something~
+    }
+});
+</code></pre>
+
+<p>}];
+//等待加载完成
+static void * playerItemStatueContext=&PlayerItemStatue;
+//添加观察者
+[playerItem addObserver:self forKeyPath:self options:0 context:playerItemStatueContext];</p></blockquote>
+
+<p>//显示到uiview的layer层上
+//添加结束通知
+[[NSNotificationCenter defaultCenter]addObser:self selector:@selector(endMethod:) name:AVPlayerItemDidPlayEndTimeNotification];</p>
+
+<p><code>``
+添加滑动条：开始：暂停播放和移除通知。更新播放时间：</code>seekToTime：`</p>
+
+<p>关于播放要记住的：</p>
+
+<blockquote><p>Player 是一个控制器
+player Item 控制当前状态
+显示由一个player layer 处理
+注意你的队列。</p></blockquote>
+
+<h4>编辑（editing）</h4>
+
+<p>由asset集合组成小块作品：部分来自其他asset；其他的来自asset；
+AVCompositonTrackSegment->AVCompositionTrack->AVComposition</p>
+
+<p>{% img center /images/blogimages/blog5_avfoundation-2.png &ldquo;工程目录结构&rdquo; %}
+{% img center /images/blogimages/blog5_avfoundation-3.png &ldquo;工程目录结构&rdquo; %}</p>
+
+<h5>时间控制需要注意的事项：</h5>
+
+<blockquote><p>浮点数不允许精确的时间估算。
+奇怪的时间尺度：29.97与30000/1001不相等。
+混合的时间尺度：29.97fps视频和44.1kHz音频</p></blockquote>
+
+<p>OS中使用的时间:
+{% img center /images/blogimages/blog5_avfoundation-4.png &ldquo;工程目录结构&rdquo; %}
+{% img center /images/blogimages/blog5_avfoundation-5.png &ldquo;工程目录结构&rdquo; %}
+{% img center /images/blogimages/blog5_avfoundation-6.png &ldquo;工程目录结构&rdquo; %}</p>
+
+<p>音频混合:
+临近的部分:AVCompostion；合并音频轨迹：AVAudioMix；合并视频轨迹：compositing；
+音频混合对象：AVMutableAudioMixInputParameters &ndash;>AVMutableAudioMix
+每一个音频混合输入参数：1.由一个音轨组成。2。描述了如何通过时间调整声音。
+默认的声音不涉及混合。</p>
+
+<p>视频复合：
+临近的部分：AVComposition；合并音频轨迹：AVAudioMix；合并视频轨迹：AVVideoComposition；</p>
+
+<p>AVComposition和AVVideoComposition
+{% img center /images/blogimages/blog5_avfoundation-7.png &ldquo;工程目录结构&rdquo; %}</p>
+
+<p>AVVideoComposition需要做的：
+对于每一个时间范围的AVAsset：
+1.创建一个对应时间范围的AVMutableVideoCompositionInstruction对象。
+2.对于每一个轨迹，都是复合的一部分：为轨迹创建一个AVMutableVideoCompositionLayerInstruction对象。
+3. 明确指定透明度。明确指定开始与结束的矩阵转换。</p>
+
+<p>音频VS视频
+音频：1.对于每一个轨迹都是描述体积变化的时间范围。2.包含绝对的轨迹。
+视频:1.对于每一个时间范围，在轨迹上描述指令组成信息。2.必须明确的包含轨迹</p>
+
+<p>协调合并对象进行工作：
+AVAudioMix与AVVideoComposition：1.他们都不是对象asset对象集合。2.操作时使用对象Asset。3.要使用行为时，将传递到控制对象。可以合并的控制对象有：
+{% img center /images/blogimages/blog5_avfoundation-8.png &ldquo;工程目录结构&rdquo; %}</p>
+
+<p>编辑要记住的：</p>
+
+<blockquote><p>composition是Asset的集合。他们由其他asset的segment对象组成。
+他们通过轨迹进行音频混合。操作可能是不明显的。
+视频Composition是一个合成的时间范围。它的操作要是显性的。</p></blockquote>
+
+<h4>核心动画与媒体（Core animation and media）</h4>
+
+<p>1.所有的UIKit渲染都使用了核心动画。
+2. 我们想对事物做的图形操作，如标题。
+3.核心动画对于图形的渲染、投射和动画有极大的实用性。</p>
+
+<p>核心动画与AV foundation
+1. UIView使用CALayer 子类。
+2. AVFoundation 提供CALayer子类：如，演示影片使用AVPlayerLayer。显示捕获的视频使用AVCaptureVideoPreviewLayer。</p>
+]]></content>
+  </entry>
+  
+</feed>
