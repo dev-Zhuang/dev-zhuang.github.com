@@ -4,7 +4,7 @@
   <title><![CDATA[数字夜话的博客]]></title>
   <link href="http://dev-zhuang.github.io/atom.xml" rel="self"/>
   <link href="http://dev-zhuang.github.io/"/>
-  <updated>2014-06-25T11:34:26+08:00</updated>
+  <updated>2014-07-04T10:01:27+08:00</updated>
   <id>http://dev-zhuang.github.io/</id>
   <author>
     <name><![CDATA[数字夜话]]></name>
@@ -12,6 +12,256 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[流媒体基本信息]]></title>
+    <link href="http://dev-zhuang.github.io/blog/2014/07/03/liu-mei-ti-ji-ben-xin-xi/"/>
+    <updated>2014-07-03T09:22:00+08:00</updated>
+    <id>http://dev-zhuang.github.io/blog/2014/07/03/liu-mei-ti-ji-ben-xin-xi</id>
+    <content type="html"><![CDATA[<h4>术语表（Glossary）</h4>
+
+<p>5.1 环绕声（5.1 Surround Sound）：一个环绕声扬声器配置包括5个扬声器位于一个圆周的具体位置和一个低音炮（”.1”）.扬声器频道同在位于：左、中、右、左环绕、右环绕和LFE（低频效果）。</p>
+
+<p>8.24 有时候写作Q8.24 或者fx8.24.定点采样大小(替代32位浮点采样)被当作标准的音频采样类型，来处理线性pcm音频。在8.24音频样本中，左边8位代表整数基点，右边24位代表小数基点。</p>
+
+<p>AAC 高级音频编码(advanced audio coding):一个压缩，有损的感知编码方案。1997年ISO/IEC 13818-7将AAC作为MPEG-2的一部分，成为MPEG-2 AAC。并在MPEG-4中做了增强，MPEG-4 AAC。根据发表在ISO/IEC JTC1/SC29/WG11, N2006 上的结果看，MPEG-2 AAC比MPEG-1，layer3（mp3）在同个位速率（bit rate）上有更好的音频质量。MPEG-4 AAC扩展了MPEG-2 AAC 的额外编码工具。</p>
+
+<p>AC－3 有dolby laboratories 开发的一个压缩，有损的感知音频格式。</p>
+
+<p>active 在iOS中用于在播放或者录音时描述audio session的状态是否可持续。比较inactive。</p>
+
+<p>ADC 模拟数字转换器(analog-to-digital converter) 一个能将样本与量化的模拟信号转换成数字信号的电子元件。ADCs的特征有采样率、幅度分辨率、其他失真特性和噪声层。专业的音频工具通常将ADCs转成线性响应。</p>
+
+<p>ADPCM 自适应脉冲编码调制 (adaptive delta pulse code modulation)：在一个动态范围内使模拟信号跟随最少的位速率，它是变体的脉码调制和扩展的差分脉冲编码调制。</p>
+
+<p>音频工程协会（Audio Engineering Society，AES):一个国际性的专业音频协会，它们已经颁布了许多关于数字音频的重要标准。</p>
+
+<p>AES-3 一个在1992年发布的，由AES定义的数字音频传输标准。也叫做AES/EBU接口，等同于IEC 60958 第四部分。AES－3标准包括不同的物理链接：平衡双绞线，非平衡同轴电缆和光纤。AES－3的诞生来源于S/PDIF (Sony/Phillips Digital Interface)标准。</p>
+
+<p>采样率（sample rate）：或称“采样速率”，是每秒内采样点（sample）的密集程度，单位是赫兹（Hz）。
+采样深度（sample depth）：或称“采样精度”，就是对采样点的采样精确度。单位是比特（bit）。
+比特率（Bit rate）：亦称“位速率”，是单位时间内传输送或处理的比特的数量。比特率经常在电信领域用作连接速度、传输速度、信道容量、最大吞吐量和数字带宽容量的同义词，根据位深的幅度分辨率，量化误差</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[明白AVFoundation]]></title>
+    <link href="http://dev-zhuang.github.io/blog/2014/06/30/ming-bai-avfoundation/"/>
+    <updated>2014-06-30T09:04:03+08:00</updated>
+    <id>http://dev-zhuang.github.io/blog/2014/06/30/ming-bai-avfoundation</id>
+    <content type="html"><![CDATA[<p>AVFoundation 基本函括了基本的音频操作，信息捕获、编辑基本信息与影片读写。这里只说简单的音频操作。</p>
+
+<h4>什么时候使用AVFoundation</h4>
+
+<blockquote><p>1.获取媒体属性 <br/>
+2.自定义播放UI和行为  <br/>
+3.组成与组合媒体  <br/>
+4.重定义媒体信息 <br/>
+5.控制相机特性</p></blockquote>
+
+<h4>AVFoundation位置</h4>
+
+<p>AVFoundation 位于核心层上层，在UIKit下层。
+<img class="center" src="http://dev-zhuang.github.io/images/blogimages/blog5_avfoundation-1.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;"></p>
+
+<h4>AVFoundation类分组</h4>
+
+<p>AVFoundation类分组主要可以分成4部分：播放设置、信息捕获、编辑和读写4块。</p>
+
+<h4>播放（playback）</h4>
+
+<h5>AVAsset</h5>
+
+<p>AVAsset是定时的视听媒体，它可以是视频、影片、歌曲、播客节目；可以是本地或者远程的；也可以是限定或者非限定的流；<br/>
+获取一个AVAsset的方式有：程序捆绑；媒体库；图片库；获取网络地址； <br/>
+AVAsset的组成：AVAssetTrackSegment->AVAssetTrack->AVAsset;  <br/>
+AVAssect信息获取会花费一定时间的原因：读取不同的文件格式、大文件文件信息读取，网络文件读取 <br/>
+异步键值加载协议：告诉我们媒体什么时候值有效，可以准备播放。</p>
+
+<h5>AVPlayer</h5>
+
+<p>AVPlayer是一个控制对象，它可以做的操作有：播放、停止和速率；不同AVAsset可以有不同的播放属性。</p>
+
+<p>一个AVPlayer可以有多个AVAsset，OC通过AVPlayerItem来协调AVAsst和AVPlayer之间的关系。AVPlayerItem与AVAsset一样，同样有AVPlayerItemTrack对象。</p>
+
+<h5>AVPlayerLayer</h5>
+
+<p>播放对象与视图之间的实现需要通过AVPlayerLayer来控制。具体播放一个音频视频的步骤是：</p>
+
+<p>播放步骤集合：</p>
+
+<blockquote><p>1.创建一个AVAsset<br/>
+2.告诉asset的Track可以被加载了<br/>
+3.一旦加载，为asset创建一个PlayerItem<br/>
+4.把Item赋值给Player<br/>
+5.把Player复制给PlayerLayer<br/>
+6.等待直到Item准备好播放，然后开始播放。</p></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">AVAsset</span> <span class="o">*</span><span class="n">asset</span> <span class="o">=</span> <span class="o">[</span><span class="no">AVURLAsset</span> <span class="ss">URLAssetWithURL</span><span class="p">:</span><span class="n">fileURL</span> <span class="ss">options</span><span class="p">:</span><span class="kp">nil</span><span class="o">]</span><span class="p">;</span>
+</span><span class='line'><span class="no">NSArray</span> <span class="o">*</span><span class="n">requestKeys</span> <span class="o">=</span> <span class="o">[</span><span class="no">NSArray</span> <span class="ss">arrayWithObjects</span><span class="p">:</span><span class="err">@“</span><span class="n">tracks</span><span class="err">”</span><span class="p">,</span><span class="err">@”</span><span class="n">playable</span><span class="err">”</span><span class="p">,</span><span class="kp">nil</span><span class="o">]</span><span class="p">;</span>
+</span><span class='line'><span class="o">[</span><span class="n">asset</span> <span class="ss">loadValuesAsynchoronouslyForKeys</span><span class="p">:</span><span class="n">requestKeys</span> <span class="ss">competionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+</span><span class='line'>  <span class="n">dispatch_async</span><span class="p">(</span><span class="n">dispatch_get_main_queue</span><span class="p">(),</span><span class="o">^</span><span class="p">{</span>
+</span><span class='line'>      <span class="sr">//</span><span class="n">complete</span> <span class="n">block</span> <span class="n">here</span>
+</span><span class='line'>      <span class="no">NSError</span> <span class="o">*</span><span class="n">err</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">;</span>
+</span><span class='line'>      <span class="no">AVKeyValueStatus</span> <span class="n">status</span> <span class="o">=[</span><span class="n">asset</span> <span class="ss">statusOfValueForKey</span><span class="p">:</span><span class="err">@“</span><span class="n">tracks</span><span class="err">”</span><span class="p">,</span><span class="ss">error</span><span class="p">:</span><span class="o">&amp;</span><span class="n">error</span><span class="o">]</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">if</span><span class="p">(</span><span class="n">status</span> <span class="o">==</span> <span class="no">AVKeyValueStatusLoaded</span><span class="p">){</span>
+</span><span class='line'>          <span class="nb">self</span><span class="o">.</span><span class="n">PlayerItem</span> <span class="o">=</span> <span class="o">[</span><span class="no">AVPlayerItem</span> <span class="ss">playerItemWithAsset</span><span class="p">:</span><span class="n">asset</span><span class="o">]</span><span class="p">;</span>
+</span><span class='line'>          <span class="nb">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="o">[</span><span class="no">AVPlayer</span> <span class="ss">playerWithPlayerItem</span><span class="p">:</span><span class="n">playerItem</span><span class="o">]</span><span class="p">;</span>
+</span><span class='line'>          <span class="o">[</span><span class="n">playerView</span>  <span class="ss">setPlayer</span><span class="p">:</span><span class="n">player</span><span class="o">]</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span><span class='line'>          <span class="sr">//</span><span class="n">don</span><span class="err">’</span><span class="n">t</span> <span class="nb">load</span> <span class="o">!</span> <span class="n">need</span> <span class="n">to</span> <span class="k">do</span> <span class="n">something</span><span class="o">~</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">}</span><span class="o">]</span><span class="p">;</span>
+</span><span class='line'><span class="sr">//</span><span class="err">等待加载完成</span>
+</span><span class='line'><span class="n">static</span> <span class="n">void</span> <span class="o">*</span> <span class="n">playerItemStatueContext</span><span class="o">=&amp;</span><span class="no">PlayerItemStatue</span><span class="p">;</span>
+</span><span class='line'><span class="sr">//</span><span class="err">添加观察者</span>
+</span><span class='line'><span class="o">[</span><span class="n">playerItem</span> <span class="ss">addObserver</span><span class="p">:</span><span class="nb">self</span> <span class="ss">forKeyPath</span><span class="p">:</span><span class="nb">self</span> <span class="ss">options</span><span class="p">:</span><span class="mi">0</span> <span class="ss">context</span><span class="p">:</span><span class="n">playerItemStatueContext</span><span class="o">]</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">//</span><span class="err">显示到</span><span class="n">uiview</span><span class="err">的</span><span class="n">layer</span><span class="err">层上</span>
+</span><span class='line'><span class="sr">//</span><span class="err">添加结束通知</span>
+</span><span class='line'><span class="o">[[</span><span class="no">NSNotificationCenter</span> <span class="n">defaultCenter</span><span class="o">]</span><span class="ss">addObser</span><span class="p">:</span><span class="nb">self</span> <span class="ss">selector</span><span class="p">:</span><span class="vi">@selector</span><span class="p">(</span><span class="ss">endMethod</span><span class="p">:)</span> <span class="nb">name</span><span class="ss">:AVPlayerItemDidPlayEndTimeNotification</span><span class="o">]</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>添加滑动条：开始：暂停播放和移除通知。  <br/>
+更新播放时间：<code>seekToTime：</code></p>
+
+<p>关于播放要记住的：</p>
+
+<blockquote><p>1.Player 是一个控制器<br/>
+2.player Item 控制当前状态<br/>
+3.显示由一个player layer处理<br/>
+4.注意你的播放队列。</p></blockquote>
+
+<h4>编辑（Editing）</h4>
+
+<p>由asset集合组成小块作品：它可以是多个不同asset的组成；</p>
+
+<p>AVCompositonTrackSegment->AVCompositionTrack->AVComposition</p>
+
+<p><img class="center" src="http://dev-zhuang.github.io/images/blogimages/blog5_avfoundation-2.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;">
+<img class="center" src="http://dev-zhuang.github.io/images/blogimages/blog5_avfoundation-3.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;"></p>
+
+<h5>时间控制需要注意的事项：</h5>
+
+<blockquote><p>1.浮点数不允许精确的时间估算。<br/>
+2.奇怪的时间尺度：29.97与30000/1001不相等。<br/>
+3.混合的时间尺度：29.97fps视频和44.1kHz音频</p></blockquote>
+
+<p>OS中使用的时间:
+<img class="center" src="http://dev-zhuang.github.io/images/blogimages/blog5_avfoundation-4.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;">
+<img class="center" src="http://dev-zhuang.github.io/images/blogimages/blog5_avfoundation-5.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;">
+<img class="center" src="http://dev-zhuang.github.io/images/blogimages/blog5_avfoundation-6.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;"></p>
+
+<p>音频混合:</p>
+
+<blockquote><p>1.临近的部分:AVCompostion；  <br/>
+2.合并音频轨迹：AVAudioMix；  <br/>
+3.合并视频轨迹：compositing;</p></blockquote>
+
+<p>音频混合对象：AVMutableAudioMixInputParameters &ndash;>AVMutableAudioMix <br/>
+每一个音频混合输入参数：1.由一个音轨组成。2。描述了如何通过时间调整声音。<br/>
+默认的声音不涉及混合。</p>
+
+<p>视频复合：</p>
+
+<blockquote><p>1.临近的部分：AVComposition；  <br/>
+2.合并音频轨迹：AVAudioMix；  <br/>
+3.合并视频轨迹：AVVideoComposition；</p></blockquote>
+
+<p>AVComposition和AVVideoComposition
+<img class="center" src="http://dev-zhuang.github.io/images/blogimages/blog5_avfoundation-7.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;"></p>
+
+<p>AVVideoComposition需要做的：
+对于每一个时间范围的AVAsset：<br/>
+1.创建一个对应时间范围的AVMutableVideoCompositionInstruction对象。<br/>
+2.对于每一个轨迹，都是复合的一部分：为轨迹创建一个AVMutableVideoCompositionLayerInstruction对象。<br/>
+3.明确指定透明度。明确指定开始与结束的矩阵转换。</p>
+
+<p>音频VS视频 <br/>
+音频:1.对于每一个轨迹都是描述体积变化的时间范围。2.包含绝对的轨迹。 <br/>
+视频:1.对于每一个时间范围，在轨迹上描述指令组成信息。2.必须明确的包含轨迹</p>
+
+<p>协调合并对象进行工作：
+AVAudioMix与AVVideoComposition：<br/>
+1.他们都不是对象asset对象集合。<br/>
+2.操作时使用对象Asset。 <br/>
+3.要使用行为时，将传递到控制对象。可以合并的控制对象有：
+<img class="center" src="http://dev-zhuang.github.io/images/blogimages/blog5_avfoundation-8.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;"></p>
+
+<p>编辑要记住的：</p>
+
+<blockquote><p>1.composition是Asset的集合。他们由其他asset的segment对象组成。<br/>
+2.他们通过轨迹进行音频混合。操作可能是不明显的。<br/>
+3.视频Composition是一个合成的时间范围。它的操作要是显性的。</p></blockquote>
+
+<h4>核心动画与媒体（Core animation and media）</h4>
+
+<p>1.所有的UIKit渲染都使用了核心动画。 <br/>
+2. 我们想对事物做的图形操作，如标题。<br/>
+3.核心动画对于图形的渲染、投射和动画有极大的实用性。</p>
+
+<p>核心动画与AV foundation<br/>
+1. UIView使用CALayer 子类。 <br/>
+2. AVFoundation 提供CALayer子类：如，演示影片使用AVPlayerLayer。显示捕获的视频使用   AVCaptureVideoPreviewLayer。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[单词记录]]></title>
+    <link href="http://dev-zhuang.github.io/blog/2014/06/26/dan-ci-ji-lu/"/>
+    <updated>2014-06-26T15:31:47+08:00</updated>
+    <id>http://dev-zhuang.github.io/blog/2014/06/26/dan-ci-ji-lu</id>
+    <content type="html"><![CDATA[<p>Audio Engineering Society
+音频工程协会</p>
+
+<p>differential pulse code modulation
+差分脉冲编码调制</p>
+
+<p>pulse-code modulation
+脉码调制</p>
+
+<p>adaptive delta pulse code modulation
+自适应脉冲编码调制</p>
+
+<p>noise floor
+噪声层</p>
+
+<p>quantization error    <br/>
+量化误差</p>
+
+<p>amplitude resolution      <br/>
+幅度分辨率；幅值分辨率</p>
+
+<p>in terms of
+根据;用…的话; 就…而言; 以…为单位;</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[知识点收集(不定期更新)]]></title>
@@ -39,9 +289,7 @@
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>enum {
-</span><span class='line'>    DT_UNKNOWN = 0,  // unknown type           未知类型
+</pre></td><td class='code'><pre><code class=''><span class='line'>enum { DT_UNKNOWN = 0,  // unknown type           未知类型
 </span><span class='line'>    #define DT_UNKNOWN DT_UNKNOWN       
 </span><span class='line'>    DT_FIFO = 1,     // a named pipe, or FIFO  管道类型或先进先出
 </span><span class='line'>    #define DT_FIFO DT_FIFO
@@ -58,7 +306,7 @@
 </span><span class='line'>    DT_SOCK = 12,   // local domain socket     socket套接字
 </span><span class='line'>    #define DT_SOCK DT_SOCK                    
 </span><span class='line'>    DT_WHT = 14     // whiteout                
-</span><span class='line'>    #define DT_WHT DT_WHT                      
+</span><span class='line'>    #define DT_WHT DT_WHT  
 </span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Swift_学习 | 数字夜话的博客]]></title>
   <link href="http://dev-zhuang.github.io/blog/categories/swift-xue-xi/atom.xml" rel="self"/>
   <link href="http://dev-zhuang.github.io/"/>
-  <updated>2014-07-02T23:34:34+08:00</updated>
+  <updated>2014-07-04T10:01:27+08:00</updated>
   <id>http://dev-zhuang.github.io/</id>
   <author>
     <name><![CDATA[数字夜话]]></name>
@@ -140,7 +140,7 @@ println(&ldquo;(result)&rdquo;)  // result: [60, 57, 21, 36]</p>
 <p>var result = sort([1,5,3,12,2]){$0>$1}      //结果执行过程看下图
 println(&ldquo;(result)&rdquo;); //result:[12,5,3,2,1]
 ```
-{% img center /images/blogimages/blog4_swift-01.jpg &ldquo;工程目录结构&rdquo; %}</p>
+<img class="center" src="/images/blogimages/blog4_swift-01.jpg" title="&ldquo;工程目录结构&rdquo;" ></p>
 
 <h4>对象和类(Objects and Classes)</h4>
 
@@ -421,7 +421,7 @@ anyCommonElements([1, 2, 3], [3])
 
 <p>伴随着雨燕发布的开发工具是<a href="http://pan.baidu.com/s/1gduwNqN">xcode 6测试版</a>,下载安装后。创建单个控制器的程序,我们可以知道可以选择<code>Objective-c</code>或者<code>Swift</code>语言来进行开发。不多说，选择Swift看看差异：</p>
 
-<p>{% img center /images/blogimages/blog3_swift-01.png &ldquo;工程目录结构&rdquo; %}</p>
+<p><img class="center" src="/images/blogimages/blog3_swift-01.png" title="&ldquo;工程目录结构&rdquo;" ></p>
 
 <ul>
 <li><h4>工程目录更简洁</h4>

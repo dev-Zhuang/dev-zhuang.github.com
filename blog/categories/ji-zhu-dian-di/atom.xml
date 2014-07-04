@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 技术点滴 | 数字夜话的博客]]></title>
   <link href="http://dev-zhuang.github.io/blog/categories/ji-zhu-dian-di/atom.xml" rel="self"/>
   <link href="http://dev-zhuang.github.io/"/>
-  <updated>2014-07-02T23:34:34+08:00</updated>
+  <updated>2014-07-04T10:01:27+08:00</updated>
   <id>http://dev-zhuang.github.io/</id>
   <author>
     <name><![CDATA[数字夜话]]></name>
@@ -51,7 +51,8 @@
     <id>http://dev-zhuang.github.io/blog/2014/06/05/zhi-shi-dian-shou-ji</id>
     <content type="html"><![CDATA[<h4>文件类型</h4>
 
-<p>```enum { DT_UNKNOWN = 0,  // unknown type           未知类型</p>
+<p>```
+enum { DT_UNKNOWN = 0,  // unknown type           未知类型</p>
 
 <pre><code>#define DT_UNKNOWN DT_UNKNOWN         
 DT_FIFO = 1,     // a named pipe, or FIFO  管道类型或先进先出

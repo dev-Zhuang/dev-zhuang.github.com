@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>明白AVFoundation - 数字夜话的博客</title>
+  <meta name="author" content="数字夜话">
+
+  
+  <meta name="description" content="AVFoundation 基本函括了基本的音频操作，信息捕获、编辑基本信息与影片读写。这里只说简单的音频操作。 什么时候使用AVFoundation 1.获取媒体属性 2.自定义播放UI和行为 3.组成与组合媒体 4.重定义媒体信息 5.控制相机特性 AVFoundation位置 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://dev-zhuang.github.io/blog/2014/06/30/ming-bai-avfoundation">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="数字夜话的博客" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">数字夜话的博客</a></h1>
+  
+    <h2>开始好好写博客.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss email">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+    <li><a href="jonz.tech@gmail.com" rel="subscribe-email" title="subscribe via email">Email</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:dev-zhuang.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">明白AVFoundation</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-30T09:04:03+08:00" pubdate data-updated="true">Jun 30<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>AVFoundation 基本函括了基本的音频操作，信息捕获、编辑基本信息与影片读写。这里只说简单的音频操作。</p>
+
+<h4>什么时候使用AVFoundation</h4>
+
+<blockquote><p>1.获取媒体属性 <br/>
+2.自定义播放UI和行为  <br/>
+3.组成与组合媒体  <br/>
+4.重定义媒体信息 <br/>
+5.控制相机特性</p></blockquote>
+
+<h4>AVFoundation位置</h4>
+
+<p>AVFoundation 位于核心层上层，在UIKit下层。
+<img class="center" src="/images/blogimages/blog5_avfoundation-1.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;"></p>
+
+<h4>AVFoundation类分组</h4>
+
+<p>AVFoundation类分组主要可以分成4部分：播放设置、信息捕获、编辑和读写4块。</p>
+
+<h4>播放（playback）</h4>
+
+<h5>AVAsset</h5>
+
+<p>AVAsset是定时的视听媒体，它可以是视频、影片、歌曲、播客节目；可以是本地或者远程的；也可以是限定或者非限定的流；<br/>
+获取一个AVAsset的方式有：程序捆绑；媒体库；图片库；获取网络地址； <br/>
+AVAsset的组成：AVAssetTrackSegment->AVAssetTrack->AVAsset;  <br/>
+AVAssect信息获取会花费一定时间的原因：读取不同的文件格式、大文件文件信息读取，网络文件读取 <br/>
+异步键值加载协议：告诉我们媒体什么时候值有效，可以准备播放。</p>
+
+<h5>AVPlayer</h5>
+
+<p>AVPlayer是一个控制对象，它可以做的操作有：播放、停止和速率；不同AVAsset可以有不同的播放属性。</p>
+
+<p>一个AVPlayer可以有多个AVAsset，OC通过AVPlayerItem来协调AVAsst和AVPlayer之间的关系。AVPlayerItem与AVAsset一样，同样有AVPlayerItemTrack对象。</p>
+
+<h5>AVPlayerLayer</h5>
+
+<p>播放对象与视图之间的实现需要通过AVPlayerLayer来控制。具体播放一个音频视频的步骤是：</p>
+
+<p>播放步骤集合：</p>
+
+<blockquote><p>1.创建一个AVAsset<br/>
+2.告诉asset的Track可以被加载了<br/>
+3.一旦加载，为asset创建一个PlayerItem<br/>
+4.把Item赋值给Player<br/>
+5.把Player复制给PlayerLayer<br/>
+6.等待直到Item准备好播放，然后开始播放。</p></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">AVAsset</span> <span class="o">*</span><span class="n">asset</span> <span class="o">=</span> <span class="o">[</span><span class="no">AVURLAsset</span> <span class="ss">URLAssetWithURL</span><span class="p">:</span><span class="n">fileURL</span> <span class="ss">options</span><span class="p">:</span><span class="kp">nil</span><span class="o">]</span><span class="p">;</span>
+</span><span class='line'><span class="no">NSArray</span> <span class="o">*</span><span class="n">requestKeys</span> <span class="o">=</span> <span class="o">[</span><span class="no">NSArray</span> <span class="ss">arrayWithObjects</span><span class="p">:</span><span class="err">@“</span><span class="n">tracks</span><span class="err">”</span><span class="p">,</span><span class="err">@”</span><span class="n">playable</span><span class="err">”</span><span class="p">,</span><span class="kp">nil</span><span class="o">]</span><span class="p">;</span>
+</span><span class='line'><span class="o">[</span><span class="n">asset</span> <span class="ss">loadValuesAsynchoronouslyForKeys</span><span class="p">:</span><span class="n">requestKeys</span> <span class="ss">competionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+</span><span class='line'>  <span class="n">dispatch_async</span><span class="p">(</span><span class="n">dispatch_get_main_queue</span><span class="p">(),</span><span class="o">^</span><span class="p">{</span>
+</span><span class='line'>      <span class="sr">//</span><span class="n">complete</span> <span class="n">block</span> <span class="n">here</span>
+</span><span class='line'>      <span class="no">NSError</span> <span class="o">*</span><span class="n">err</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">;</span>
+</span><span class='line'>      <span class="no">AVKeyValueStatus</span> <span class="n">status</span> <span class="o">=[</span><span class="n">asset</span> <span class="ss">statusOfValueForKey</span><span class="p">:</span><span class="err">@“</span><span class="n">tracks</span><span class="err">”</span><span class="p">,</span><span class="ss">error</span><span class="p">:</span><span class="o">&amp;</span><span class="n">error</span><span class="o">]</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">if</span><span class="p">(</span><span class="n">status</span> <span class="o">==</span> <span class="no">AVKeyValueStatusLoaded</span><span class="p">){</span>
+</span><span class='line'>          <span class="nb">self</span><span class="o">.</span><span class="n">PlayerItem</span> <span class="o">=</span> <span class="o">[</span><span class="no">AVPlayerItem</span> <span class="ss">playerItemWithAsset</span><span class="p">:</span><span class="n">asset</span><span class="o">]</span><span class="p">;</span>
+</span><span class='line'>          <span class="nb">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="o">[</span><span class="no">AVPlayer</span> <span class="ss">playerWithPlayerItem</span><span class="p">:</span><span class="n">playerItem</span><span class="o">]</span><span class="p">;</span>
+</span><span class='line'>          <span class="o">[</span><span class="n">playerView</span>  <span class="ss">setPlayer</span><span class="p">:</span><span class="n">player</span><span class="o">]</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span><span class='line'>          <span class="sr">//</span><span class="n">don</span><span class="err">’</span><span class="n">t</span> <span class="nb">load</span> <span class="o">!</span> <span class="n">need</span> <span class="n">to</span> <span class="k">do</span> <span class="n">something</span><span class="o">~</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">}</span><span class="o">]</span><span class="p">;</span>
+</span><span class='line'><span class="sr">//</span><span class="err">等待加载完成</span>
+</span><span class='line'><span class="n">static</span> <span class="n">void</span> <span class="o">*</span> <span class="n">playerItemStatueContext</span><span class="o">=&amp;</span><span class="no">PlayerItemStatue</span><span class="p">;</span>
+</span><span class='line'><span class="sr">//</span><span class="err">添加观察者</span>
+</span><span class='line'><span class="o">[</span><span class="n">playerItem</span> <span class="ss">addObserver</span><span class="p">:</span><span class="nb">self</span> <span class="ss">forKeyPath</span><span class="p">:</span><span class="nb">self</span> <span class="ss">options</span><span class="p">:</span><span class="mi">0</span> <span class="ss">context</span><span class="p">:</span><span class="n">playerItemStatueContext</span><span class="o">]</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">//</span><span class="err">显示到</span><span class="n">uiview</span><span class="err">的</span><span class="n">layer</span><span class="err">层上</span>
+</span><span class='line'><span class="sr">//</span><span class="err">添加结束通知</span>
+</span><span class='line'><span class="o">[[</span><span class="no">NSNotificationCenter</span> <span class="n">defaultCenter</span><span class="o">]</span><span class="ss">addObser</span><span class="p">:</span><span class="nb">self</span> <span class="ss">selector</span><span class="p">:</span><span class="vi">@selector</span><span class="p">(</span><span class="ss">endMethod</span><span class="p">:)</span> <span class="nb">name</span><span class="ss">:AVPlayerItemDidPlayEndTimeNotification</span><span class="o">]</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>添加滑动条：开始：暂停播放和移除通知。  <br/>
+更新播放时间：<code>seekToTime：</code></p>
+
+<p>关于播放要记住的：</p>
+
+<blockquote><p>1.Player 是一个控制器<br/>
+2.player Item 控制当前状态<br/>
+3.显示由一个player layer处理<br/>
+4.注意你的播放队列。</p></blockquote>
+
+<h4>编辑（Editing）</h4>
+
+<p>由asset集合组成小块作品：它可以是多个不同asset的组成；</p>
+
+<p>AVCompositonTrackSegment->AVCompositionTrack->AVComposition</p>
+
+<p><img class="center" src="/images/blogimages/blog5_avfoundation-2.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;">
+<img class="center" src="/images/blogimages/blog5_avfoundation-3.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;"></p>
+
+<h5>时间控制需要注意的事项：</h5>
+
+<blockquote><p>1.浮点数不允许精确的时间估算。<br/>
+2.奇怪的时间尺度：29.97与30000/1001不相等。<br/>
+3.混合的时间尺度：29.97fps视频和44.1kHz音频</p></blockquote>
+
+<p>OS中使用的时间:
+<img class="center" src="/images/blogimages/blog5_avfoundation-4.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;">
+<img class="center" src="/images/blogimages/blog5_avfoundation-5.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;">
+<img class="center" src="/images/blogimages/blog5_avfoundation-6.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;"></p>
+
+<p>音频混合:</p>
+
+<blockquote><p>1.临近的部分:AVCompostion；  <br/>
+2.合并音频轨迹：AVAudioMix；  <br/>
+3.合并视频轨迹：compositing;</p></blockquote>
+
+<p>音频混合对象：AVMutableAudioMixInputParameters &ndash;>AVMutableAudioMix <br/>
+每一个音频混合输入参数：1.由一个音轨组成。2。描述了如何通过时间调整声音。<br/>
+默认的声音不涉及混合。</p>
+
+<p>视频复合：</p>
+
+<blockquote><p>1.临近的部分：AVComposition；  <br/>
+2.合并音频轨迹：AVAudioMix；  <br/>
+3.合并视频轨迹：AVVideoComposition；</p></blockquote>
+
+<p>AVComposition和AVVideoComposition
+<img class="center" src="/images/blogimages/blog5_avfoundation-7.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;"></p>
+
+<p>AVVideoComposition需要做的：
+对于每一个时间范围的AVAsset：<br/>
+1.创建一个对应时间范围的AVMutableVideoCompositionInstruction对象。<br/>
+2.对于每一个轨迹，都是复合的一部分：为轨迹创建一个AVMutableVideoCompositionLayerInstruction对象。<br/>
+3.明确指定透明度。明确指定开始与结束的矩阵转换。</p>
+
+<p>音频VS视频 <br/>
+音频:1.对于每一个轨迹都是描述体积变化的时间范围。2.包含绝对的轨迹。 <br/>
+视频:1.对于每一个时间范围，在轨迹上描述指令组成信息。2.必须明确的包含轨迹</p>
+
+<p>协调合并对象进行工作：
+AVAudioMix与AVVideoComposition：<br/>
+1.他们都不是对象asset对象集合。<br/>
+2.操作时使用对象Asset。 <br/>
+3.要使用行为时，将传递到控制对象。可以合并的控制对象有：
+<img class="center" src="/images/blogimages/blog5_avfoundation-8.png" title="&#34;工程目录结构&#34;" alt="&#34;工程目录结构&#34;"></p>
+
+<p>编辑要记住的：</p>
+
+<blockquote><p>1.composition是Asset的集合。他们由其他asset的segment对象组成。<br/>
+2.他们通过轨迹进行音频混合。操作可能是不明显的。<br/>
+3.视频Composition是一个合成的时间范围。它的操作要是显性的。</p></blockquote>
+
+<h4>核心动画与媒体（Core animation and media）</h4>
+
+<p>1.所有的UIKit渲染都使用了核心动画。 <br/>
+2. 我们想对事物做的图形操作，如标题。<br/>
+3.核心动画对于图形的渲染、投射和动画有极大的实用性。</p>
+
+<p>核心动画与AV foundation<br/>
+1. UIView使用CALayer 子类。 <br/>
+2. AVFoundation 提供CALayer子类：如，演示影片使用AVPlayerLayer。显示捕获的视频使用   AVCaptureVideoPreviewLayer。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">数字夜话</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-30T09:04:03+08:00" pubdate data-updated="true">Jun 30<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ios-ted/'>IOS_TED</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    
+    <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_xiaoyou"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1396404044678373" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+<div>
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1933910"></script>
+    <!-- UY END -->
+</div>
+
+    
+  
+  
+  
+ 
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/06/26/dan-ci-ji-lu/" title="Previous Post: 单词记录">&laquo; 单词记录</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/07/03/liu-mei-ti-ji-ben-xin-xi/" title="Next Post: 流媒体基本信息">流媒体基本信息 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>我的微博</h1>
+<iframe width="260" height="400" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=zh_tw&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=6&isTitle=0&noborder=1&isWeibo=1&isFans=1&uid=3989441254&verifier=1ea82041&dpc=1"></iframe>
+</section><section>
+  <h1>最近文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/07/03/liu-mei-ti-ji-ben-xin-xi/">流媒体基本信息</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/30/ming-bai-avfoundation/">明白AVFoundation</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/26/dan-ci-ji-lu/">单词记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/05/zhi-shi-dian-shou-ji/">知识点收集(不定期更新)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/05/swift-han-shu-yu-lei/">Swift 函数与类</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+<section> 
+  <h1>文章分类</h1> 
+  <ul id="categories"> 
+    <li class='category'><a href='/blog/categories/ios-ted/'>IOS_TED (1)</a></li>
+<li class='category'><a href='/blog/categories/swift-学习/'>Swift_学习 (2)</a></li>
+<li class='category'><a href='/blog/categories/技术点滴/'>技术点滴 (2)</a></li>
+<li class='category'><a href='/blog/categories/流媒体学习/'>流媒体学习 (1)</a></li>
+<li class='category'><a href='/blog/categories/环境配置/'>环境配置 (1)</a></li>
+
+  </ul> 
+</section>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - 数字夜话 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

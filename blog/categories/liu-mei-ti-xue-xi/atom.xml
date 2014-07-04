@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 流媒体学习 | 数字夜话的博客]]></title>
+  <link href="http://dev-zhuang.github.io/blog/categories/liu-mei-ti-xue-xi/atom.xml" rel="self"/>
+  <link href="http://dev-zhuang.github.io/"/>
+  <updated>2014-07-04T10:01:27+08:00</updated>
+  <id>http://dev-zhuang.github.io/</id>
+  <author>
+    <name><![CDATA[数字夜话]]></name>
+    <email><![CDATA[jonz.tech@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[流媒体基本信息]]></title>
+    <link href="http://dev-zhuang.github.io/blog/2014/07/03/liu-mei-ti-ji-ben-xin-xi/"/>
+    <updated>2014-07-03T09:22:00+08:00</updated>
+    <id>http://dev-zhuang.github.io/blog/2014/07/03/liu-mei-ti-ji-ben-xin-xi</id>
+    <content type="html"><![CDATA[<h4>术语表（Glossary）</h4>
+
+<p>5.1 环绕声（5.1 Surround Sound）：一个环绕声扬声器配置包括5个扬声器位于一个圆周的具体位置和一个低音炮（”.1”）.扬声器频道同在位于：左、中、右、左环绕、右环绕和LFE（低频效果）。</p>
+
+<p>8.24 有时候写作Q8.24 或者fx8.24.定点采样大小(替代32位浮点采样)被当作标准的音频采样类型，来处理线性pcm音频。在8.24音频样本中，左边8位代表整数基点，右边24位代表小数基点。</p>
+
+<p>AAC 高级音频编码(advanced audio coding):一个压缩，有损的感知编码方案。1997年ISO/IEC 13818-7将AAC作为MPEG-2的一部分，成为MPEG-2 AAC。并在MPEG-4中做了增强，MPEG-4 AAC。根据发表在ISO/IEC JTC1/SC29/WG11, N2006 上的结果看，MPEG-2 AAC比MPEG-1，layer3（mp3）在同个位速率（bit rate）上有更好的音频质量。MPEG-4 AAC扩展了MPEG-2 AAC 的额外编码工具。</p>
+
+<p>AC－3 有dolby laboratories 开发的一个压缩，有损的感知音频格式。</p>
+
+<p>active 在iOS中用于在播放或者录音时描述audio session的状态是否可持续。比较inactive。</p>
+
+<p>ADC 模拟数字转换器(analog-to-digital converter) 一个能将样本与量化的模拟信号转换成数字信号的电子元件。ADCs的特征有采样率、幅度分辨率、其他失真特性和噪声层。专业的音频工具通常将ADCs转成线性响应。</p>
+
+<p>ADPCM 自适应脉冲编码调制 (adaptive delta pulse code modulation)：在一个动态范围内使模拟信号跟随最少的位速率，它是变体的脉码调制和扩展的差分脉冲编码调制。</p>
+
+<p>音频工程协会（Audio Engineering Society，AES):一个国际性的专业音频协会，它们已经颁布了许多关于数字音频的重要标准。</p>
+
+<p>AES-3 一个在1992年发布的，由AES定义的数字音频传输标准。也叫做AES/EBU接口，等同于IEC 60958 第四部分。AES－3标准包括不同的物理链接：平衡双绞线，非平衡同轴电缆和光纤。AES－3的诞生来源于S/PDIF (Sony/Phillips Digital Interface)标准。</p>
+
+<p>采样率（sample rate）：或称“采样速率”，是每秒内采样点（sample）的密集程度，单位是赫兹（Hz）。
+采样深度（sample depth）：或称“采样精度”，就是对采样点的采样精确度。单位是比特（bit）。
+比特率（Bit rate）：亦称“位速率”，是单位时间内传输送或处理的比特的数量。比特率经常在电信领域用作连接速度、传输速度、信道容量、最大吞吐量和数字带宽容量的同义词，根据位深的幅度分辨率，量化误差</p>
+]]></content>
+  </entry>
+  
+</feed>
