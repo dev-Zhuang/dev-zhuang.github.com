@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: IOS8系列学习 | 数字夜话的博客]]></title>
+  <link href="http://dev-zhuang.github.io/blog/categories/ios8xi-lie-xue-xi/atom.xml" rel="self"/>
+  <link href="http://dev-zhuang.github.io/"/>
+  <updated>2014-08-17T20:39:55+08:00</updated>
+  <id>http://dev-zhuang.github.io/</id>
+  <author>
+    <name><![CDATA[数字夜话]]></name>
+    <email><![CDATA[jonz.tech@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[IOS8系列]]></title>
+    <link href="http://dev-zhuang.github.io/blog/2014/08/17/ios8xi-lie/"/>
+    <updated>2014-08-17T18:00:29+08:00</updated>
+    <id>http://dev-zhuang.github.io/blog/2014/08/17/ios8xi-lie</id>
+    <content type="html"><![CDATA[<p>IOS8系列学习目录整理
+与之前的sdk版本相似，sdk内容主要分以下几部分：
+<img class="center" src="/images/blogimages/blog6_ios8struct-1.png" title="&ldquo;工程目录结构&rdquo;" >
+<img class="center" src="/images/blogimages/blog6_ios8struct-2.png" title="&ldquo;模拟器&rdquo;" ></p>
+
+<br/><br/>
+
+
+
+
+<table  class="table table-bordered table-striped table-condensed">
+   <tr><td>结构</td><td>描述</td></tr>
+   <tr><td>framework</td><td>由apple工程师封装的框架</td></tr>
+   <tr><td>developerframeworks</td><td>由apple工程师封装的测试框架</td></tr>
+   <tr><td>user/include</td><td>apple常用的一些c/c++函数</td></tr>
+   <tr><td>user/local/include</td><td>apple对模拟器支持的一些c/c++</td></tr>
+</table>
+
+]]></content>
+  </entry>
+  
+</feed>

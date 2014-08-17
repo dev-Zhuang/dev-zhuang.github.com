@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Swift_学习 | 数字夜话的博客]]></title>
-  <link href="http://dev-zhuang.github.io/blog/categories/swift-xue-xi/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Swift语法_学习 | 数字夜话的博客]]></title>
+  <link href="http://dev-zhuang.github.io/blog/categories/swiftyu-fa-xue-xi/atom.xml" rel="self"/>
   <link href="http://dev-zhuang.github.io/"/>
-  <updated>2014-07-04T10:01:27+08:00</updated>
+  <updated>2014-08-17T20:39:55+08:00</updated>
   <id>http://dev-zhuang.github.io/</id>
   <author>
     <name><![CDATA[数字夜话]]></name>

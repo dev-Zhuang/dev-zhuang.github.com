@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 技术点滴 | 数字夜话的博客]]></title>
   <link href="http://dev-zhuang.github.io/blog/categories/ji-zhu-dian-di/atom.xml" rel="self"/>
   <link href="http://dev-zhuang.github.io/"/>
-  <updated>2014-07-04T10:01:27+08:00</updated>
+  <updated>2014-08-17T20:39:55+08:00</updated>
   <id>http://dev-zhuang.github.io/</id>
   <author>
     <name><![CDATA[数字夜话]]></name>
@@ -49,7 +49,28 @@
     <link href="http://dev-zhuang.github.io/blog/2014/06/05/zhi-shi-dian-shou-ji/"/>
     <updated>2014-06-05T18:41:47+08:00</updated>
     <id>http://dev-zhuang.github.io/blog/2014/06/05/zhi-shi-dian-shou-ji</id>
-    <content type="html"><![CDATA[<h4>文件类型</h4>
+    <content type="html"><![CDATA[<h4>mac OS下安装Yasm</h4>
+
+<blockquote><ol>
+<li>到［yasm官网]<a href="http://yasm.tortall.net/Download.html">ref2</a>下载sourcecode。（我下的是yasm 1.2）</li>
+<li>解压缩压缩包</li>
+<li>终端terminate cd 到yasm1.2.0文件夹</li>
+<li>执行./configure</li>
+<li>执行make&amp;&amp;make install</li>
+<li>待执行完成，输入yams —-version 查看ban版本。若存在，表示安装成功。</li>
+</ol>
+</blockquote>
+
+<h4>IOS CoreData error”Cannot create an NSPersistentStoreCoordinator with a nil model”</h4>
+
+<p>由于不小心删除了app中的数据模型文件，只能重新添加，之后给数据模型换名字、原名和修改path路径，怎么弄一直编译不通过。最后发现在build Phases》copy bundle Resources里没有模型的文件。添加上，编译通过。</p>
+
+<h4>IOS7 uiscrollview子视图下移</h4>
+
+<p>在NavigationController的视图下，给viewcontroller添加UISCrollview, scrollview添加子视图。发现scrollview中的子视图下移60px。
+解决办法:<a href="http://blog.sina.com.cn/s/blog_693850220101ev1i.html">见andy的博客</a></p>
+
+<h4>文件类型</h4>
 
 <p>```
 enum { DT_UNKNOWN = 0,  // unknown type           未知类型</p>

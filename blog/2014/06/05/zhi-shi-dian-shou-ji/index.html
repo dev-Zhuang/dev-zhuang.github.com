@@ -9,26 +9,12 @@
   <meta name="author" content="数字夜话">
 
   
-  <meta name="description" content="文件类型 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-enum { DT_UNKNOWN = 0, // unknown type 未知类型 #define DT_UNKNOWN DT_UNKNOWN DT_FIFO = 1, // a &hellip;">
+  <meta name="description" content="mac OS下安装Yasm 到［yasm官网]ref2下载sourcecode。（我下的是yasm 1.2）
+解压缩压缩包
+终端terminate cd 到yasm1.2.0文件夹
+执行./configure
+执行make&amp;&amp;make install
+待执行完成，输入yams —- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -112,7 +98,28 @@ enum { DT_UNKNOWN = 0, // unknown type 未知类型 #define DT_UNKNOWN DT_UNKNOW
   </header>
 
 
-<div class="entry-content"><h4>文件类型</h4>
+<div class="entry-content"><h4>mac OS下安装Yasm</h4>
+
+<blockquote><ol>
+<li>到［yasm官网]<a href="http://yasm.tortall.net/Download.html">ref2</a>下载sourcecode。（我下的是yasm 1.2）</li>
+<li>解压缩压缩包</li>
+<li>终端terminate cd 到yasm1.2.0文件夹</li>
+<li>执行./configure</li>
+<li>执行make&amp;&amp;make install</li>
+<li>待执行完成，输入yams —-version 查看ban版本。若存在，表示安装成功。</li>
+</ol>
+</blockquote>
+
+<h4>IOS CoreData error”Cannot create an NSPersistentStoreCoordinator with a nil model”</h4>
+
+<p>由于不小心删除了app中的数据模型文件，只能重新添加，之后给数据模型换名字、原名和修改path路径，怎么弄一直编译不通过。最后发现在build Phases》copy bundle Resources里没有模型的文件。添加上，编译通过。</p>
+
+<h4>IOS7 uiscrollview子视图下移</h4>
+
+<p>在NavigationController的视图下，给viewcontroller添加UISCrollview, scrollview添加子视图。发现scrollview中的子视图下移60px。
+解决办法:<a href="http://blog.sina.com.cn/s/blog_693850220101ev1i.html">见andy的博客</a></p>
+
+<h4>文件类型</h4>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -152,6 +159,8 @@ enum { DT_UNKNOWN = 0, // unknown type 未知类型 #define DT_UNKNOWN DT_UNKNOW
 </span><span class='line'>    DT_WHT = 14     // whiteout                
 </span><span class='line'>    #define DT_WHT DT_WHT  
 </span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
+
+
 
 </div>
 
@@ -241,6 +250,10 @@ enum { DT_UNKNOWN = 0, // unknown type 未知类型 #define DT_UNKNOWN DT_UNKNOW
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/08/17/ios8xi-lie/">IOS8系列</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/07/03/liu-mei-ti-ji-ben-xin-xi/">流媒体基本信息</a>
       </li>
     
@@ -256,10 +269,6 @@ enum { DT_UNKNOWN = 0, // unknown type 未知类型 #define DT_UNKNOWN DT_UNKNOW
         <a href="/blog/2014/06/05/zhi-shi-dian-shou-ji/">知识点收集(不定期更新)</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/06/05/swift-han-shu-yu-lei/">Swift 函数与类</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -269,8 +278,9 @@ enum { DT_UNKNOWN = 0, // unknown type 未知类型 #define DT_UNKNOWN DT_UNKNOW
 <section> 
   <h1>文章分类</h1> 
   <ul id="categories"> 
-    <li class='category'><a href='/blog/categories/ios-ted/'>IOS_TED (1)</a></li>
-<li class='category'><a href='/blog/categories/swift-学习/'>Swift_学习 (2)</a></li>
+    <li class='category'><a href='/blog/categories/ios8系列学习/'>IOS8系列学习 (1)</a></li>
+<li class='category'><a href='/blog/categories/ios-ted/'>IOS_TED (1)</a></li>
+<li class='category'><a href='/blog/categories/swift语法-学习/'>Swift语法_学习 (2)</a></li>
 <li class='category'><a href='/blog/categories/技术点滴/'>技术点滴 (2)</a></li>
 <li class='category'><a href='/blog/categories/流媒体学习/'>流媒体学习 (1)</a></li>
 <li class='category'><a href='/blog/categories/环境配置/'>环境配置 (1)</a></li>
