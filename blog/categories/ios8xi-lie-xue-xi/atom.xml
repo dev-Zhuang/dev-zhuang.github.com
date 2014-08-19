@@ -4,7 +4,7 @@
   <title><![CDATA[Category: IOS8系列学习 | 数字夜话的博客]]></title>
   <link href="http://dev-zhuang.github.io/blog/categories/ios8xi-lie-xue-xi/atom.xml" rel="self"/>
   <link href="http://dev-zhuang.github.io/"/>
-  <updated>2014-08-17T20:39:55+08:00</updated>
+  <updated>2014-08-19T18:54:17+08:00</updated>
   <id>http://dev-zhuang.github.io/</id>
   <author>
     <name><![CDATA[数字夜话]]></name>
@@ -18,8 +18,28 @@
     <link href="http://dev-zhuang.github.io/blog/2014/08/17/ios8xi-lie/"/>
     <updated>2014-08-17T18:00:29+08:00</updated>
     <id>http://dev-zhuang.github.io/blog/2014/08/17/ios8xi-lie</id>
-    <content type="html"><![CDATA[<p>IOS8系列学习目录整理
-与之前的sdk版本相似，sdk内容主要分以下几部分：
+    <content type="html"><![CDATA[<p>IOS8系列学习目录整理</p>
+
+<h4>学习路线</h4>
+
+<blockquote><ol>
+<li>IOS8 Swift语言与objective-c</li>
+<li>IOS8 lib库学习</li>
+<li>XCode IDE介绍</li>
+<li>Test单元测试</li>
+<li>第三方框架</li>
+<li>软件工程</li>
+<li>用户UI设计</li>
+</ol>
+</blockquote>
+
+<h4>IOS8语言学习</h4>
+
+<p>IOS语言分为IOS8前的obcjective－c和IOS8后的Swift语言。见Swift语法_学习系列</p>
+
+<h4>IOS8 lib库学习</h4>
+
+<p>与之前的sdk版本相似，sdk内容主要分以下几部分：
 <img class="center" src="/images/blogimages/blog6_ios8struct-1.png" title="&ldquo;工程目录结构&rdquo;" >
 <img class="center" src="/images/blogimages/blog6_ios8struct-2.png" title="&ldquo;模拟器&rdquo;" ></p>
 
@@ -28,12 +48,327 @@
 
 
 
-<table  class="table table-bordered table-striped table-condensed">
-   <tr><td>结构</td><td>描述</td></tr>
-   <tr><td>framework</td><td>由apple工程师封装的框架</td></tr>
-   <tr><td>developerframeworks</td><td>由apple工程师封装的测试框架</td></tr>
-   <tr><td>user/include</td><td>apple常用的一些c/c++函数</td></tr>
-   <tr><td>user/local/include</td><td>apple对模拟器支持的一些c/c++</td></tr>
+<table border="1">
+<tbody>
+   <tr border="1px"><td>结构</td><td>描述</td></tr>
+   <tr border="1px"><td>framework</td><td>由apple工程师封装的框架</td></tr>
+   <tr border="1px"><td>developerframeworks</td><td>由apple工程师封装的测试框架</td></tr>
+   <tr border="1px"><td>user/include</td><td>apple常用的一些c/c++函数</td></tr>
+   <tr border="1px"><td>user/local/include</td><td>apple对模拟器支持的一些c/c++</td></tr>
+   </tbody>
+</table>
+
+
+<p>从IOS的系统层次划分学习单元。分为4层62个框架与其他框架组合11个，总共73个框架。这些框架中可以归纳的知识点包括：图形、流媒体、网络与数据等等。</p>
+
+<table>
+    <tr>
+        <td>系统层次</td>
+        <td>框架名</td>
+        <td>描述</td>
+    </tr>
+    <tr >
+        <td rowspan="10">cocoa touch layer（10）</td>
+        <td>UIKit</td>  
+        <td></td>   
+    </tr>
+    <tr>
+        <td>AddressBookUI</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>EventKitUI</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Twitter</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>PhotosUI</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>NotificationCenter</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>MessageUI</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>MapKit</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>iAd</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>GameKit</td>
+        <td></td>
+    </tr>
+    
+    <tr >
+        <td rowspan="22">media layer（22）</td>
+        <td>AssetsLibrary</td>  
+        <td></td>   
+    </tr>
+    <tr>
+        <td>AudioToolBox</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>AudioUnit</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>AVFoundation</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>CoreAudio</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>CoreGraphics</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>CoreImage</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>CoreMIDI</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>CoreText</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>CoreVideo</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>GameController</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>GLKit</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>ImageIO</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>MediaAccessibility</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>MediaPlayer</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>Metal</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>OpenAL</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>OpenGLES</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>Photos</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>QuartzCore</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>SceneKit</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>SpriteKit</td>
+        <td></td>
+    </tr>
+    
+    
+    <tr >
+        <td rowspan="24">core Services layer（24）</td>
+        <td>Accounts</td>   
+        <td></td>   
+    </tr>
+    <tr>
+        <td>AddressBook</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>AdSupport</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>CFNetWork</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>CloudKit</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>CoreData</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>CoreFoundation</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>CoreLocation</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>CoreMedia</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>CoreMotion</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>CoreTelephony</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>EventKit</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>Foundation</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>HomeKit</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>javaScriptCore</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>MobileCoreServices</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>MultipeerConnectivity</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>NewsstandKit</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>Passkit</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>QuickLook</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>Social</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>StoreKit</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>SystemConfiguration</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>UIAutomation</td>
+        <td></td>
+    </tr>
+    
+    <tr >
+        <td rowspan="6">core OS layer（6）</td>
+        <td>Accelerate</td> 
+        <td></td>   
+    </tr>
+    <tr>
+        <td>CoreBluetooth</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>ExternalAccessory</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>LocalAuthentication</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>Security</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>system</td>
+        <td></td>
+    </tr>
+    
+    <tr >
+        <td rowspan="18">其他framwork（11）</td>
+        <td>ApplicationServices</td>    
+        <td></td>   
+    </tr>
+    <tr>
+        <td>AVKit</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>webKit</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>VideoToolBox</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>SafariServices</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>pushKit</td>
+        <td></td>
+    </tr>
+        <tr>
+        <td>notificationUI</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>IOKit</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>healthKit</td>
+        <td></td>
+    </tr>
+    <tr >
+        <td>GSS</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>MediaToolbox</td>
+        <td></td>
+    </tr>
 </table>
 
 ]]></content>
